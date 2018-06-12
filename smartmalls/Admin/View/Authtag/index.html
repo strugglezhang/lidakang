@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>标签入库</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src='/smartbaby/Parent/Public/Js/jquery-1.8.3.min.js'></script>
+<body>
+<style type="text/css">
+.f1 {color: #333;font-size: 16px;}
+.d1 {padding: 10px 20px;}
+.params, .read_div, .controller {width: 300px;height: 200px;float: left;border: 1px solid #444;font-size: 14px;color: #444;}
+.notes {font-size: 18px;color: #333;text-align: center;line-height: 160px;}
+.taglist_div {background-color: white;height: 150px;overflow: auto;widows: 960px;}
+.update_succeed {background-color: white;height: 200px;overflow: auto;widows: 960px;}
+.update_failed {background-color: white;height: 100px;overflow: auto;widows: 960px;}
+.tag_span {margin: 5px;}
+.read_tags {margin: 5px;}
+</style>
+<div style="width:1000px;margin:50px auto;background-color:#ccc;">
+	<div class="d1">
+		<p style="font-size:24px;text-align:center;">标签入库</p>
+	</div>
+	<div class="d1">
+		<include file='Menu/index' />
+	</div>
+	<div class="d1" style="overflow: hidden;zoom:1;">
+		<div class="params">
+			<div style="padding: 15px;">
+				<div>
+					请选择学校:
+					<select id="schoolid" autocomplete="off">
+						<option value="0">请选择...</option>
+						<foreach name='schools' item='v' >
+							<option value="{$v.id}">{$v.name}</option>
+						</foreach>
+					</select>
+				</div>
+				<div style="margin-top: 15px;">
+					请选择设备:
+					<select id="equipmentid" autocomplete="off">
+						<option value="0">请选择...</option>
+					</select>
+				</div>
+				<div style="margin-top: 18px;">
+					<span><button autocomplete="off" id="start_readtags" onclick="start_readtags()">开始读标签</button></span>
+					<span><button autocomplete="off" disabled="disabled" id="stop_readtags" onclick="stop_readtags()">停止读标签</button></span>
+				</div>
+			</div>
+				
+		</div>
+		<div class="read_div">
+			<div id="showtag" style=" padding: 15px;">
+				<div class="notes">请开始读标签</div>
+			</div>
+		</div>
+		<div class="controller">
+			<div style="padding: 15px;">
+				<div style="margin-top: 30px;">
+					<span><button autocomplete="off" id="add_to_taglist" onclick="addtolist()">添加到标签列表</button></span>
+				</div>
+			</div>
+			<div style="padding: 15px;">
+				<div style="margin-top: 30px;">
+					<span><button autocomplete="off" id="auto_taglist" onclick="autoaddtolist()">自动添加至列表</button></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="d1">
+		<div>
+			<span><button autocomplete="off" id="update_tags" onclick="updateTags()">更新到数据库</button></span>
+		</div>
+	</div>
+	<div class="d1">
+		<p>标签列表:</p>
+		<div class="taglist_div">
+			
+		</div>
+		<p>已成功入库标签:</p>
+		<div class="update_succeed">
+			
+		</div>
+		<p>入库失败标签:</p>
+		<div class="update_failed">
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var obj_schoolid = null;
+var obj_equipmentid = null;
+var obj_showtag = null;
+var obj_start_readtags = null;
+var obj_stop_readtags = null;
+var obj_taglist_div = null;
+var obj_update_succeed = null;
+var obj_update_failed = null;
+var obj_add_to_taglist = null;
+var obj_auto_taglist = null;
+var timehandle = null;
+var readtags_handle = false;
+var tagslist = {};
+var autoAdd = false;
+var temp = null;
+var block = false;
+$(window).ready(function(){
+	obj_schoolid = $('#schoolid');
+	obj_showtag = $('#showtag');
+	obj_start_readtags = $('#start_readtags');
+	obj_stop_readtags = $('#stop_readtags');
+	obj_taglist_div = $('.taglist_div');
+	obj_update_succeed = $('.update_succeed');
+	obj_update_failed = $('.update_failed');
+	obj_add_to_taglist = $('#add_to_taglist');
+	obj_auto_taglist = $('#auto_taglist');
+	obj_equipmentid = $('#equipmentid');
+	obj_schoolid.change(function(index){
+		getequipments();
+	});
+})
+function updateTags(){
+	stop_readtags();
+	$.ajax({
+		'url':'/Admin/Authtag/update_tags_api',
+		'data':{'tags':tagslist},
+		'type':'post',
+		'dataType':'json',
+		success: function(data){
+			if (data.status == 0) {
+				window.location.href = '/Admin/Login/index';
+			}
+			if (data.code == 1) {
+				var succeed_str = '';
+				var succeed_count = data.data.succeed.length;
+				for (var i = 0; i < succeed_count; i++) {
+					succeed_str += '<span class="tag_span">'+data.data.succeed[i]+'</span>';
+				}
+				var failed_str = '';
+				var failed_count = data.data.failed.length;
+				for (var i = 0; i < failed_count; i++) {
+					failed_str += '<span class="tag_span">'+data.data.failed[i]+'</span>';
+				}
+				obj_update_succeed.prepend(succeed_str);
+				obj_update_failed.prepend(failed_str);
+				tips(succeed_count+'条入库成功,'+failed_count+'条失败');
+				tagslist = {};
+				obj_taglist_div.empty();
+			}else if(data.code == 0){
+				tpis('failed!'+data.info);
+				return
+			}else if(data.code == 2){
+				tpis('该学校未添加设备!');
+				return;
+			}else{
+				tpis('error');
+				return;
+			}
+		}
+	});
+}
+function addtolist(){
+	if (block) {
+		tips('正在处理数据，请重试！');
+		return;
+	}
+	addtoTaglist(temp,2);
+}
+function autoaddtolist(){
+	if (block) {
+		tips('正在处理数据，请重试！');
+		return;
+	}
+	if (autoAdd) {
+		autoAdd = false;
+		obj_add_to_taglist.removeAttr('disabled');
+		obj_auto_taglist.text('自动添加至列表');
+	}else{
+		autoAdd = true;
+		obj_add_to_taglist.attr('disabled','disabled');
+		obj_auto_taglist.text('取消自动添加至列表');
+	}
+}
+function start_readtags(){
+	var schoolid = obj_schoolid.val();
+	if (schoolid == '0') {
+		tips('请选择学校，然后选择设备！');
+		return;
+	}
+	var equipmentid = obj_equipmentid.val();
+	if (equipmentid == '0') {
+		tips('请选择设备！');
+		return;
+	}
+	readtags_handle = true;
+	obj_start_readtags.attr('disabled','disabled');
+	obj_stop_readtags.removeAttr('disabled');
+	readtags(equipmentid);
+}
+function stop_readtags(){
+	clearTimeout(timehandle);
+	readtags_handle = false;
+	obj_stop_readtags.attr('disabled','disabled');
+	obj_start_readtags.removeAttr('disabled');
+	obj_showtag.empty();
+	obj_showtag.append('<div class="notes">请开始读标签</div>');
+}
+function readtags(id){
+	clearTimeout(timehandle);
+	$.ajax({
+		'url':'/Admin/Authtag/readtags_api',
+		'data':{'eid':id},
+		'type':'post',
+		'dataType':'json',
+		success: function(data){
+			if (data.status == 0) {
+				window.location.href = '/Admin/Login/index';
+			}
+			if (data.code == 1) {
+				var str = '';
+				var str_note = '';
+				block = true;
+				for(var key in data.data){
+					str += '<span class="read_tags">'+key+'('+data.data[key]+')</span>';
+					if (autoAdd) {
+						if (tagslist[key] == null) {
+							tagslist[key] = key;
+							addtoTaglist(key,1);
+						}else{
+							str_note += key + ',';
+						}
+					}
+				}
+				obj_showtag.empty();
+				obj_showtag.append(str);
+				if (str_note != '') {
+					tips(str_note+'已在列表');
+				}
+				if (!autoAdd) {
+					temp = data.data;
+				}
+				block = false;
+			}else if(data.code == 0){
+				tipstips('failed!'+data.info);
+				stop_readtags();
+				return;
+			}else if(data.code == 2){
+				obj_showtag.empty();
+				var str = '<div class="notes">未读到标签</div>';
+				obj_showtag.append(str);
+			}else{
+				tipstips('error');
+				return;
+			}
+		}
+	});
+	if (readtags_handle) {
+		timehandle=setTimeout(function(){
+			readtags(id);
+		},3000);
+	}
+}
+function addtoTaglist(keys,type){
+	if (type == 1) {
+		obj_taglist_div.prepend('<span class="tag_span">'+keys+'</span>');
+	}else if(type == 2){
+		var str = '';
+		for(var tag in keys){
+			if (tagslist[tag] == null) {
+				tagslist[tag] = tag;
+				obj_taglist_div.prepend('<span class="tag_span">'+tag+'</span>');
+			}else{
+				str += tag + ',';
+			}
+		}
+		if (str != '') {
+			tips(str+'已在列表');
+		}
+	}else if(type == 3){
+		var str = '';
+		for(var tag in tagslist){
+			str = '<span class="tag_span">'+tag+'</span>' + str;
+		}
+		obj_taglist_div.empty();
+		obj_taglist_div.append(str);
+	}
+
+}
+function getequipments(){
+	var id = obj_schoolid.val();
+	if (id == '0') {
+		return;
+	}
+	$.ajax({
+		'url':'/Admin/Authtag/equipment_list_api',
+		'data':{'schoolid':id},
+		'type':'post',
+		'dataType':'json',
+		success: function(data){
+			if (data.status == 0) {
+				window.location.href = '/Admin/Login/index';
+			}
+			if (data.code == 1) {
+				var str = '<option value="0">请选择...</option>';
+				for (var i = 0; i < data.data.length; i++) {
+					str += '<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>';
+				}
+				obj_equipmentid.empty();
+				obj_equipmentid.append(str);
+			}else if(data.code == 0){
+				tpis('failed!'+data.info);
+				return
+			}else if(data.code == 2){
+				tpis('该学校未添加设备!');
+				return;
+			}else{
+				tpis('error');
+				return;
+			}
+		}
+	});
+}
+
+var tips_inter = null;
+var old_msg = '';
+function tips(msg,time=3000) {
+	if (msg == old_msg) {
+		return;
+	}
+	clearTimeout(tips_inter);
+	$('.tips').text(msg);
+	$('.tips').animate({top:'-40px'},200);
+	$('.tips').animate({top:'0px'},400);
+	if (time != 0) {
+		tips_inter = setTimeout(function(){
+			$('.tips').animate({top:'-40px'},800);
+			old_msg = '';
+		},time+800);
+	}
+}
+</script>
+<div class="tips" style="background-color: #666;color: white;font-size: 16px;text-align: center;height: 40px;line-height: 40px;position: fixed;top:-40px;width: 100%;">
+</body>
+</head>
+</html>

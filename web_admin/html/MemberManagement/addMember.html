@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>新增会员</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/info/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/fontawesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../assets/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/form.js"></script>
+    <script type="text/javascript" src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/libs/breakpoints.js"></script>
+    <script type="text/javascript" src="../../plugins/respond/respond.min.js"></script>
+    <script type="text/javascript" src="../../plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../../plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/plugins.form-components.js"></script>
+    <script type="text/javascript" src="../../assets/js/common/common.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row mart20">
+        <div class="col-md-12">
+            <div class="widget box">
+                <div class="widget-content">
+                    <form class="form-horizontal row-border" id="UserInfo" action="#" novalidate="novalidate"
+                          onsubmit="">
+                        <div class="form-wizard">
+                            <div class="form-body">
+                                <div class="addphoto"><a href="">上传头像</a></div>
+                                <div class="tab-content">
+                                    <div class="infoCont">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">会员编号</label>
+                                            <div class="col-md-4">
+                                                <div class="gonghao">2220</div>
+                                                <!--    <input type="text" class="form-control has-success" maxlength="6" id="use_name" placeholder="请输入工号">
+                                                   <span class="help-block"></span> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">姓名</label>
+                                            <div class="col-md-4">
+                                                <input name="name" type="text" class="form-control has-success" maxlength="6"
+                                                       id="use_name" placeholder="请输入姓名">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">性别</label>
+                                            <div class="col-md-4">
+                                                <div class="xingbie">
+                                                    <label><input name="sex" type="radio" value="1"/>男 </label>
+                                                    <label><input name="sex" type="radio" value="2"/>女 </label>
+                                                </div>
+                                                <!-- <span class="help-block"></span> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">籍贯<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="birth_province_id">
+                                                    <option value="">北京</option>
+                                                    <option value="">天津</option>
+                                                </select>
+                                                <select class="form-control" name="birth_city_id">
+                                                    <option value="">北京</option>
+                                                    <option value="">天津</option>
+                                                </select>
+
+                                                <select class="form-control" name="birth_district_id">
+                                                    <option value="">北京</option>
+                                                    <option value="">天津</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">出生日期<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <div class="input-group">
+                                                    <input type="text" name="regular" class="form-control datepicker"
+                                                           placeholder="yyyy-mm-dd" readonly>
+                                                    <span class="help-block">输入错误</span>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">身份证号<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="id_number" type="text" class="form-control required" id="number_name"
+                                                       placeholder="请输入数字">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">所在地址</label>
+                                            <div class="col-md-4">
+                                                <input name="address" type="text" class="form-control has-success" maxlength="6"
+                                                       id="use_name" placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">家长电话</label>
+                                            <div class="col-md-4">
+                                                <input name="parent_phone" type="text" class="form-control has-success" maxlength="6"
+                                                       id="use_name" placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">联系电话</label>
+                                            <div class="col-md-4">
+                                                <input name="phone" type="text" class="form-control has-success" maxlength="6"
+                                                       id="use_name" placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="infoCont">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">婚姻状况<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="marriage">
+                                                    <option value="1">已婚</option>
+                                                    <option value="2">未婚</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">健康状况<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="health">
+                                                    <option value="1">健康</option>
+                                                  <option value="2">遗传性疾病</option>
+                                                  <option value="3">非遗传性疾病</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">体重<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="weight" type="text" class="form-control required" id="special"
+                                                       placeholder="不能输入特殊字符">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">身高<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text"  name="height" class="form-control required" id="special"
+                                                       placeholder="不能输入特殊字符">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">血型<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="blood_type" type="text" class="form-control required" id="number_name"
+                                                       placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">学历</label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="education">
+                                                    <option value="1">高中</option>
+                                                    <option value="2">中专</option>
+                                                    <option value="3">大专</option>
+                                                    <option value="4">本科</option>
+                                                    <option value="5">硕士</option>
+                                                    <option value="6">博士</option>
+                                                    <option value="7">博士后</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">专业<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="major" type="text" class="form-control required" id="number_name"
+                                                       placeholder="请输入数字">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">毕业学校<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="school" type="text" class="form-control required" id="number_name"
+                                                       placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both"></div>
+                                     <div class="mer_border"></div>
+                                    <div class="addphoto"><a href="">上传头像</a></div>
+                                    <div class="infoCont">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">家长姓名<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="Parent_name" type="text" class="form-control required" id="number_name"
+                                                       placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">家长关系</label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="relation">
+                                                    <option value="1">父亲</option>
+                                                    <option value="2">母亲</option>
+                                                    <option value="3">爷爷</option>
+                                                    <option value="4">奶奶</option>
+                                                    <option value="5">姥爷</option>
+                                                    <option value="6">姥姥</option>
+                                                    <option value="7">其他</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">家庭地址</label>
+                                            <div class="col-md-4">
+                                                <input name="Parent_address" type="text" class="form-control has-success" maxlength="6"
+                                                       id="use_name" placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                       <!--  <div class="form-group">
+                                            <label class="control-label col-md-3">联系电话</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control has-success" maxlength="6"
+                                                       id="use_name" placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3"></label>
+                                            <div class="col-md-4">
+                                                <button class="left">保存</button><button class="right">取消</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;overflow: hidden;"></div>
+                                    <div class="border_divi"></div>
+                                    <div class="infoCont">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3"></label>
+                                            <div class="col-md-4">
+                                                <button class="btn_family">增加家长信息</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3"></label>
+                                            <div class="col-md-4">
+                                                <button class="btn_family">绑定卡片</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                            <div class="form-actions fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="submit_info">
+                                            <button class="btn btn-primary" type="submit" data-toggle="modal"
+                                                    data-target="#myModal">完 成
+                                            </button>
+                                            <button class="btn btn-default" type="reset">重置</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        console.log(htmlToJson())
+        alert(htmlToJson())
+        
+    })
+</script>
+</html>

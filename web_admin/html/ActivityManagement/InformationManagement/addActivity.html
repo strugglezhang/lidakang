@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>新增活动</title>
+   <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/addActivies.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/fontawesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../../assets/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/form.js"></script>
+    <script type="text/javascript" src="../../../bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/libs/breakpoints.js"></script>
+    <script type="text/javascript" src="../../../plugins/respond/respond.min.js"></script>
+    <script type="text/javascript" src="../../../plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../../../plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+    <script type="text/javascript" src="../../../plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/plugins.form-components.js"></script>
+    <script type="text/javascript" src="../../../assets/js/demo/ui_general.js"></script>
+
+   <script type="text/javascript" src="../../../assets/js/common/common.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mart20">
+        <div class="col-md-12">
+            <div class="widget box">
+                <div class="widget-content">
+                    <form class="form-horizontal row-border" id="UserInfo" action="#" novalidate="novalidate"
+                          onsubmit="">
+                        <div class="form-wizard">
+                            <div class="form-body">
+                                <div class="tab-content">
+                                    <div class="infoCont_1">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3"></label>
+                                            <div class="col-md-4">
+                                                <div class="addphoto"><a href="">上传头像</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">活动名称</label>
+                                            <div class="col-md-4">
+                                                <input name="name"type="text" class="form-control has-success" maxlength="6"
+                                                       placeholder="请输入活动名称" id="no_null">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">筹办单位类别<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select name="Host_id" id="" class="form-control datepicker"></select>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">筹办单位<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select name="host" id="" class="form-control datepicker"></select>
+                                                 <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">活动开始时间</label>
+                                            <div class="col-md-4">
+                                              
+                                                    <input name="start_time"type="text" name="regular" class="form-control datepicker" placeholder="yyyy-mm-dd" readonly>
+                                                    <span class="help-block">输入错误</span>
+                                                 
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">活动结束时间<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                
+                                                    <input name="end_time" type="text" name="regular" class="form-control datepicker" placeholder="yyyy-mm-dd" readonly  id="no_null">
+                                                    <span class="help-block">输入错误</span>
+                                                 
+                                               
+                                                <!--<select>
+                                                    <option value="">时</option>
+                                                    <option value=""></option>
+                                                </select>-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">活动地点</label>
+                                            <div class="col-md-4">
+                                                <input name="place" type="text" class="form-control required"
+                                                       placeholder="请输入活动地点">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">活动联系人<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="contact"type="text" class="form-control has-success" maxlength="6" placeholder="请输入联系人" id="no_null">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">活动联系电话<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="phone"type="text" class="form-control has-success" maxlength="11" minlength="11"
+                                                       placeholder="请输入联系电话" id="no_null">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">活动细则<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <textarea name="detail"id="no_null"></textarea>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="infoCont">
+                                        <!--<div class="form-group">
+                                            <div class="col-md-4">
+                                                基准时长=60<br/>
+                                                60小时以上为优惠时长<br/>
+                                                60小时为基准数，超出部分打折扣<br/>
+                                                <input type="text" class="inpB_0">&nbsp;元
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                基准价格（每小时价格）
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="col-md-4">
+                                                时段价格（每小时价格）
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-4 bor-ac">
+                                                从
+                                                <select>
+                                                    <option value="0">周一</option>
+                                                    <option aluve="1">周二</option>
+                                                    <option value="2">周三</option>
+                                                    <option value="3">周四</option>
+                                                    <option aluve="4">周五</option>
+                                                    <option value="5">周六</option>
+                                                    <option value="6">周日</option>
+                                                </select>
+                                                到
+                                                <select>
+                                                    <option value="0">周一</option>
+                                                    <option aluve="1">周二</option>
+                                                    <option value="2">周三</option>
+                                                    <option value="3">周四</option>
+                                                    <option aluve="4">周五</option>
+                                                    <option value="5">周六</option>
+                                                    <option value="6">周日</option>
+                                                </select><br/>
+                                                从
+                                                <select>
+                                                    <option value="1时">1时</option>
+                                                    <option value="2时">2时</option>
+                                                    <option value="3时">3时</option>
+                                                    <option value="4时">4时</option>
+                                                    <option value="5时">5时</option>
+                                                    <option value="6时">6时</option>
+                                                    <option value="7时">7时</option>
+                                                    <option value="8时">8时</option>
+                                                    <option value="9时">9时</option>
+                                                    <option value="10时">10时</option>
+                                                    <option value="11时">11时</option>
+                                                    <option value="12时">12时</option>
+                                                    <option value="13时">13时</option>
+                                                    <option value="14时">14时</option>
+                                                    <option value="15时">15时</option>
+                                                    <option value="16时">16时</option>
+                                                    <option value="17时">17时</option>
+                                                    <option value="18时">18时</option>
+                                                    <option value="19时">19时</option>
+                                                    <option value="20时">20时</option>
+                                                    <option value="21时">21时</option>
+                                                    <option value="22时">22时</option>
+                                                    <option value="23时">23时</option>
+                                                    <option value="24时">24时</option>
+                                                </select>
+                                                <select>
+                                                    <option value="00">00</option>
+                                                    <option value="05">05</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                    <option value="30">30</option>
+                                                    <option value="35">35</option>
+                                                    <option value="40">40</option>
+                                                    <option value="45">45</option>
+                                                    <option value="50">50</option>
+                                                    <option value="55">55</option>
+                                                </select>
+                                                到
+                                                <select>
+                                                    <option value="1时">1时</option>
+                                                    <option value="2时">2时</option>
+                                                    <option value="3时">3时</option>
+                                                    <option value="4时">4时</option>
+                                                    <option value="5时">5时</option>
+                                                    <option value="6时">6时</option>
+                                                    <option value="7时">7时</option>
+                                                    <option value="8时">8时</option>
+                                                    <option value="9时">9时</option>
+                                                    <option value="10时">10时</option>
+                                                    <option value="11时">11时</option>
+                                                    <option value="12时">12时</option>
+                                                    <option value="13时">13时</option>
+                                                    <option value="14时">14时</option>
+                                                    <option value="15时">15时</option>
+                                                    <option value="16时">16时</option>
+                                                    <option value="17时">17时</option>
+                                                    <option value="18时">18时</option>
+                                                    <option value="19时">19时</option>
+                                                    <option value="20时">20时</option>
+                                                    <option value="21时">21时</option>
+                                                    <option value="22时">22时</option>
+                                                    <option value="23时">23时</option>
+                                                    <option value="24时">24时</option>
+                                                </select>
+                                                <select>
+                                                    <option value="00">00</option>
+                                                    <option value="05">05</option>
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                    <option value="30">30</option>
+                                                    <option value="35">35</option>
+                                                    <option value="40">40</option>
+                                                    <option value="45">45</option>
+                                                    <option value="50">50</option>
+                                                    <option value="55">55</option>
+                                                </select>
+                                                <label>时段价格<input type="text">(每小时/平米/元)</label>
+                                                <div class="end_for clearfix">
+                                                    <button>确认</button><button>取消</button>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                    <div style="clear:both"></div>
+                                    <div class="infoCont"></div>
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                            <div class="form-actions fluid">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="submit_info">
+                                            <button class="btn btn-primary" type="submit" data-toggle="modal"
+                                                    data-target="#myModal" id="newAct_to">提交
+                                            </button>
+                                            <button class="btn btn-default" type="reset">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+   $(function(){
+        console.log(htmlToJson())
+        alert(htmlToJson())
+        
+    });
+</script>
+<script type="text/javascript" src="../../../assets/js/activies/newMake.js"></script>
+</html>

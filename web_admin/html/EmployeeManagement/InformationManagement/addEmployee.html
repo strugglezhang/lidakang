@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title></title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/jcDate.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/fontawesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../../assets/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/form.js"></script>
+    <script type="text/javascript" src="../../../bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/common/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="../../../assets/js/common/easy.ajax.js"></script>
+    <script type="text/javascript" src="../../../assets/js/common/getUrlParam.js"></script>
+    <script type="text/javascript" src="../../../assets/js/data/jQuery-jcDate.js"></script>
+    <script type="text/javascript" src="../../../plugins/cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../../assets/js/common/common.js"></script>
+    
+    
+
+</head>
+<body >
+<div class="container">
+   <!--左侧导航begin-->
+      <!-- <div id="sidebar" class="sidebar-fixed">
+        <div id="sidebar-content">
+          <ul id="nav">
+             <li ><a href="../../../html/EmployeeManagement/InformationManagement/info_admin.html"  target="rightCont">员工信息管理</a></li>
+             <li ><a href="#"></i>今日考勤</a></li>
+             <li ><a href="#"></i>考勤设定</a></li>
+             <li ><a href="#">考勤明细</a></li>
+             <li ><a href="#">考勤统计</a></li>
+             <li ><a href="#">考勤评审</a></li>
+          </ul>
+        </div>
+      
+      </div> -->
+      <!-- 左侧导航over -->
+    <div class="row mart20">
+        <div class="col-md-12">
+            <div class="widget box">
+            <!-- 头像上传 -->
+            <div class="addphoto">
+             <div class="bigBox">
+                    <div id="photo_file">
+                      <input type="file" id="uploadfile" name="uploadfile">
+                      <div class="saw_file"></div>
+                    </div>
+                    <p>*点击图片选择/更换头像*</p>
+                    <input type="button" class="submitImg"value="上传" id="submitImg">
+                </div>
+            </div>
+            <!-- 头像上传 -->
+                <div class="widget-content">
+                    <form class="form-horizontal row-border" id="UserInfo" action="#" novalidate="novalidate" onsubmit="">
+                        <div class="form-wizard">
+                            <div class="form-body">
+                                <div class="tab-content">
+                                    <div class="infoCont" id="input_region">
+
+                                       <!--  <div class="form-group">
+                                            <label class="control-label col-md-3">工号1</label>
+                                            <div class="col-md-4">
+                                                <div>
+                                                    <p class="gonghao">2220</p>
+                                                
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">姓名</label>
+                                            <div class="col-md-4">
+                                            
+                                                    <input type="text" class="form-control has-success" maxlength="6" name="name" id="Required_name" placeholder="请输入姓名">
+                                                    <span class="help-block"></span>
+                                                
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">性别</label>
+                                            <div class="col-md-4">
+                                                
+                                                    <input name="sex" type="radio" checked value="1" />男 
+                                                    <input name="sex" type="radio" value="2" />女 
+                                                    
+                                                    <input type="hidden" name="id"/>
+                                                <!-- <span class="help-block"></span> -->
+                                            </div>
+                                        </div>
+                                          <div class="form-group">
+      
+                                         <label class="control-label col-md-3">籍贯<span class="required">*</span></label>
+                                    <!--             <a class="btn-select" id="btn_select1">
+                                                  <i class="cur-select" id="province_1">请选择</i> 
+                                                  <select  name="birth_province" id="birth_province">
+                                               
+
+                                                  </select>
+                                            </a>
+                                            </div>
+                                              <div class="form-group">
+      
+                                            <label class="control-label col-md-3"></label>
+                                             <a class="btn-select bottom1" id="btn_select2">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select   name="birth_city" id="birth_city">
+                                                   
+
+                                                  </select>
+                                            </a>
+                                            </div>
+                                           <div class="form-group">
+                                            <label class="control-label col-md-3"></label>
+                                             <a class="btn-select bottom1" id="btn_select3">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select  name="birth_district" id="birth_district">
+                                                   
+
+                                                  </select>
+                                            </a>
+                                            </div> -->
+                                            <div class="col-md-4">
+                                                    <select class="form-control bottom" name="birth_province_id" id="birth_province">
+                                                   
+                                                    </select>
+
+                                                <select class="form-control bottom" name="birth_city_id" id="birth_city">
+                                                     
+                                                   
+                                                    </select>
+
+                                                <select class="form-control" name="birth_district_id" id="birth_district">
+                                                      
+                                                    </select>
+
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">出生年月<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                           
+                                                    <input type="text" name="birthday"  class="form-control datepicker jcDate" placeholder="yyyy-mm-dd" >
+                                                    <span class="help-block">输入错误</span>
+                                                
+                                               
+                                            </div>
+                                        </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-md-3">身份证号<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="id_number" class="form-control has-block" id="IDCard_name" placeholder="请输入身份证号码" maxlength="18">
+                                                <input type="hidden" name="flag" class="form-control help-block" id="flag" value="add">
+                                                <input type="hidden" name="worker_id" class="form-control help-block" id="worker_id" value="">
+                                                <input type="hidden" name="pic" id="pic" value=""/>
+                                                <span class="help-block">请输入</span>
+                                            </div>
+                                         </div>
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">所在地址</label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="address" class="form-control has-success"  id="Required_name" placeholder="请输入">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">入职时间<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                               
+                                                    <input type="text" name="join_time" class="form-control  datepicker jcDate"   placeholder="yyyy-mm-dd" id="" >
+                                                    <span class="help-block"></span>
+                                                
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">合同期（结束时间）<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                    <input type="text" name="contract_time" class="form-control datepicker jcDate" placeholder="yyyy-mm-dd"  >
+                                                    <span class="help-block">输入错误</span>
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">民簇</label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="nation" class="form-control has-success"  id="Required_name" placeholder="请输入民簇">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                               <div class="infoCont" id="input_region">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">在职状态<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="state" id="state">
+                                                  <option value="0">请选择</option>
+                                                  <option value="1">未审核</option>
+                                                  <option value="2">在职</option>
+                                                  <option value="3">冻结</option>
+                                                  <option value="4">离职</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                              <!--           <div class="form-group">
+                                            <label class="control-label col-md-3">在职状态</label>
+                                             <a class="btn-select bottom1" id="btn_select">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select  name="state">
+                                                    <option value="1">未审核</option>
+                                                  <option value="2">正常（已审核）</option>
+                                                  <option value="3">冻结</option>
+                                                  <option value="4">已离职</option>
+
+                                                  </select>
+                                            </a>
+                                            </div> -->
+
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">婚姻状况<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="marriage" id="Required_name">
+                                                  <option value="1">已婚</option>
+                                                  <option value="2">未婚</option>
+                                                  <option value="3">丧偶</option>
+                                                  <option value="4">离异</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                <!--          <div class="form-group">
+                                            <label class="control-label col-md-3">婚姻状况</label>
+                                             <a class="btn-select bottom1">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select  name="marriage">
+                                                   <option value="1">已婚</option>
+                                                  <option value="2">未婚</option>
+                                                  <option value="3">丧偶</option>
+                                                  <option value="4">离异</option>
+
+                                                  </select>
+                                            </a>
+                                            </div> -->
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">健康状况<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="health">
+                                                  <option value="1">健康</option>
+                                                  <option value="2">遗传性疾病</option>
+                                                  <option value="3">非遗传性疾病</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                   <!--     <div class="form-group">
+                                           <label class="control-label col-md-3">健康状况</label>
+                                             <a class="btn-select bottom1">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select  name="health">
+                                                   <option value="1">健康</option>
+                                                  <option value="2">遗传性疾病</option>
+                                                  <option value="3">非遗传性疾病</option>
+
+                                                  </select>
+                                            </a>
+                                            </div> -->
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">学历<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <select class="form-control" name="education">
+                                                  <option value="1">高中</option>
+                                                  <option value="2">中专</option>
+                                                  <option value="3">大专</option>
+                                                  <option value="4">本科</option>
+                                                  <option value="5">硕士</option>
+                                                  <option value="6">博士</option>
+                                                  <option value="7">博士后</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--  <div class="form-group">
+                                            <label class="control-label col-md-3">学历</label>
+                                             <a class="btn-select bottom1">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select  name="education">
+                                                    <option value="1">高中</option>
+                                                  <option value="2">中专</option>
+                                                  <option value="3">大专</option>
+                                                  <option value="4">本科</option>
+                                                  <option value="5">硕士</option>
+                                                  <option value="6">博士</option>
+                                                  <option value="7">博士后</option>
+
+                                                  </select>
+                                            </a>
+                                            </div> -->
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">专业<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="major" class="form-control required" id="Required_name" placeholder="不能输入特殊字符">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-md-3">毕业院校<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="school" class="form-control required" id="Required_name" placeholder="不能输入特殊字符">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">联系电话<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="phone" class="form-control required" id="numberphone_name" placeholder="请输入电话号码"  maxlength="11">
+                                                <span class="help-block">/span>
+                                            </div>
+                                        </div>
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">紧急联系人</label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="emergency_contact"  class="form-control has-success"  id="Required_name" placeholder="请输入名称">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                          <div class="form-group">
+                                            <label class="control-label col-md-3">紧急联系人电话<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" name="emergency_phone" class="form-control required" id="numberphone_name" maxlength="11" placeholder="请输入数字">
+                                                <span class="help-block">/span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                     <div style="clear:both"></div>
+                                    <div class="infoCont" id="input_region">
+                               <!--       <div class="form-group">
+      
+                                            <label class="control-label col-md-3">所在部门<span class="required">*</span></label>
+                                             <a class="btn-select" id="btn_select">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select  name="dept">
+                                                    <option>技术</option>
+                                                    <option>技术1</option>
+
+                                                  </select>
+                                            </a>
+                                            </div> -->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">所在部门<span class="required">*</span></label>
+                                            <div class="formcontrolselect1">
+                                                <select class="select_s" name="dept_id" id="dept_id">
+                                                 
+                                                </select>
+                                               <input type="button" class="add_section dept"  value="添加部门" />
+                                            </div>
+                                        </div>
+                                        <!-- 添加部门 -->
+                                          <div class="form-group position_name1">
+                                             <label class="control-label col-md-3"></label>
+                                            <div class="col-md-4 ">
+                                                <input type="text" name="emergency_contact" id="emergency_contact"  class="form-control has-success"  placeholder="请输入部门名称">
+                                                <input type="button"  class="add_section left1" value="保存"/>
+                                                <input type="button"  class="add_section left2" value="取消"/>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div> 
+                                <!--          <div class="form-group">
+      
+                                            <label class="control-label col-md-3">所处职位<span class="required">*</span></label>
+                                             <a class="btn-select" id="btn_select">
+                                                  <i class="cur-select">请选择</i> 
+                                                  <select  name="position">
+                                                    <option>技术</option>
+                                                    <option>技术1</option>
+
+                                                  </select>
+                                            </a> 
+                                            </div> -->
+                                         <div class="form-group">
+                                            <label class="control-label col-md-3">所处职位<span class="required">*</span></label>
+                                            <div class="formcontrolselect1">
+                                                <select class="select_s" name="position_id" id="position_id">
+                                         
+                                                </select>
+                                               <input type="button"  class="add_section position" value="添加职位"/>
+                                            </div>
+                                            
+                                        </div>  
+                                         <!--添加职位  -->
+                                        <div class="form-group position_name">
+                                             <label class="control-label col-md-3"></label>
+                                            <div class="col-md-4 ">
+                                                <input type="text" name="position_name" id="position_name"  class="form-control has-success"  placeholder="请输入职位名称">
+                                                <input type="button"  class="add_section left1"  id="position_name_add" value="保存"/>
+                                                <input type="button"  class="add_section left2" value="取消"/>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3" id="DeBrand">备注<span class="required">*</span></label>
+                                            <div class="col-md-4">
+                                            
+                                                <input type="text" class="about_teat" name="remarks" id="remarks" style="width:100px,height:100px" value=""/>
+                                            </div>
+                                        </div>                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                            <div class="form-actions fluid">
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="submit_info">
+                                        <button class="btn btn-primary" type="button" >完 成</button>
+                                        <button class="btn btn-default" type="reset" >重置</button><!-- data-toggle="modal" data-target="#myModal" -->
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--重置弹出层begin-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+           <div class="modal-content tishi">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">提示</h4>
+          </div>
+             <div class="tankang_style">
+
+             <p><img src="../../../assets/img/index/u872.png" class="del_img_p"/>确认要重置吗？</p>
+             </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger width-100">确认</button>
+            <button type="button" class="btn width-100" data-dismiss="modal">取 消</button>
+          </div>
+        </div>
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+<!--重置弹出层over-->
+ <!--添加职位弹出层begin-->
+   <!--  <div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+           <div class="modal-content tishi">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">提示</h4>
+          </div>
+           <input type="text">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger width-100">确认</button>
+            <button type="button" class="btn width-100" data-dismiss="modal">取 消</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+<!--添加职位弹出层over-->
+
+
+</div>
+</body>
+<script type="text/javascript">
+      
+      //时间选择
+      $("input.jcDate").jcDate({                 
+      IcoClass : "jcDateIco",
+      Event : "click",
+      Speed : 100,
+      Left : 0,
+      Top : 28,
+      format : "-",
+      Timeout : 100
+     });
+    $(function(){
+
+        /*//加载职位
+        selectQuery(positionListUrl,'{"dept_id":"1"}',"position_id","id","name")
+        //加载部门
+        selectQuery(departListUrl,{},"dept_id","id","name")*/
+        //部门职位级联
+        seconeLevelRelationAction(departListUrl,positionListUrl,"dept_id","position_id",{},'"dept_id":',"id","name","id","name")
+        $("#dept_id").on("change",function(){
+          var param = '{"dept_id":'+'"'+$(this).val()+'"}'
+          seconeLevelSelectAction(positionListUrl,param,"position_id","id","name",true)
+        });
+		    areaInit('birth_province','birth_city','birth_district')
+         var type=UrlParm.parm("type"); 
+         
+         if(type=='update'){
+            var worker_id= UrlParm.parm("worker_id")
+            var param = '{"worker_id":'+worker_id+'}'
+            $("#worker_id").val(worker_id)
+            $("#flag").val("update") 
+            param = paseJson(param)
+            getUpdateData(employeeUpdateUrl,param,"state:select,name:input,number:input,id:input,mall_id:imput,phone:input,sex:radio,email:input,pic:image,birthday:input,id_number:input,birth_province_id:select,birth_city_id:select,birth_district_id:select,birth_address:input,address:input,marriage:input,health:select,education:select,major:input,school:input,dept_id:select,dept_name:input,position_id:select,position_name:input,remarks:textarea,join_time:input,contract_time:input,leave_time:input,last_login_time:input,nation:select,emergency_contact:input,emergency_phone:input")
+         }
+        
+        $(".btn-primary").on("click",function(){
+          // alert(htmlToJson())
+          var messagePrifx = "";
+          if(type=='update'){
+              messagePrifx = "修改"
+          }else{
+            messagePrifx = "添加"
+          }
+			     callAdd(employeeAddUrl,htmlToJson(),messagePrifx)
+			
+		    });
+        $("#birth_province").on("change",function(){
+          var pid = $(this).val()
+          var target = $(this).attr("id")
+          selectPrivence(target,'province',pid)
+          // $(this).html(pid)
+        });
+         $("#birth_city").on("change",function(){
+          var pid = $(this).val()
+          var target = $(this).attr("id")
+          //var pid =  $("#birth_city").val()
+          codeAnalysisCity(target,'district',pid)
+        });
+        //添加职位
+        $(".add_section.position").click(function(){
+          $(".form-group.position_name").show();
+        });
+        //添加职位
+         $("#position_name_add").on("click",function(){
+            $(".form-group.position_name").hide();
+            var depName = $("#position_name").val()
+            var depId = $("#dept_id").val()
+            var param = '{"flag":"add",'+ '"position_name":"'+depName+ '",'+'"dept_id":"'+depId+'"}'
+            callAdd(positionAddUrl,param,"添加");
+            var param = '{"dept_id":'+'"'+$("#dept_id").val()+'"}'
+            seconeLevelSelectAction(positionListUrl,param,"position_id","id","name",true)
+         });
+          //添加部门
+        $(".position_name1").hide();
+        $(".add_section.dept").click(function(){
+        $(".form-group.position_name1").show();
+        });
+        $(".add_section.left2").click(function(){
+           $(".form-group.position_name1").hide();
+        });
+      
+    });
+    
+</script>
+</html>

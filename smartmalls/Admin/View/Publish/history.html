@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>APP版本更新记录</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src='/smartbaby/Parent/Public/Js/jquery-1.8.3.min.js'></script>
+<body>
+<style type="text/css">
+.f1 {color: #333;font-size: 16px;}
+.d1 {padding: 10px 20px;}
+.title {text-align: right;}
+#list_table {border-right: 1px solid #57c;border-bottom: 1px solid #57c}
+#list_table th {line-height: 2;border-left: 1px solid #57c;border-top: 1px solid #57c;}
+#list_table td {border-left: 1px solid #57c;border-top: 1px solid #57c;text-align: center;line-height: 1.6;word-break:break-all;word-wrap:break-word;font-size: 14px;color: #333;}
+.loadmore, .nomore {text-align: center;width: 100%;border-radius: 4px;line-height: 2;color: #35e;border:1px solid #e57;display: block;}
+.loadmore:hover {color: white;background-color: #3e5;cursor: pointer;}
+.delete_btn {color: #55e;cursor: pointer;}
+</style>
+<div style="width:1000px;margin:50px auto;background-color:#ccc;">
+	<div class="d1">
+		<p style="font-size:24px;text-align:center;">APP版本更新记录</p>
+	</div>
+	<div class="d1">
+		<include file='Menu/index' />
+	</div>
+	<div class="d1">
+		<span>
+			TYPE: 
+			<select id="type_div">
+				<option value="0">全部</option>
+				<option value="3">家长版</option>
+				<option value="1">教师版</option>
+				<option value="4">园长版</option>
+				<option value="5">rfid</option>
+				<option value="2">exe文件</option>
+			</select>
+		</span>
+		<span style="float: right;line-height: 1.8;">
+			<a href="/Admin/Publish/recycle_bin">回收站</a>
+		</span>	
+	</div>
+	<div class="d1">
+		<table id="list_table" border="0" cellspacing="0" cellpadding="0" width="100%"></table>
+	</div>
+	<div class="d1" id="loadmore_div" style="display: none;">
+		<span class="loadmore" onclick="loadmore()">加载更多</span>
+	</div>
+	<div class="d1" id="nomore_div" style="display: none;">
+		<span class="nomore" >没有更多了</span>
+	</div>
+</div>
+<script type="text/javascript">
+var type_name = {
+	'1' : '教师版',
+	'2' : 'exe文件',
+	'3' : '家长版',
+	'4' : '园长版',
+	'5' : 'rfid'
+}
+var load_btn = true;
+var obj_table = null;
+var obj_type = null;
+var obj_loadmore_div = null;
+var obj_nomore_div = null;
+var type = 0;
+var page = 0;
+$(window).ready(function(){
+	obj_table = $('#list_table');
+	obj_type = $('#type_div');
+	obj_loadmore_div = $('#loadmore_div');
+	obj_nomore_div = $('#nomore_div');
+	
+	obj_type.change(function(index){
+		load();
+	});
+
+	load();
+})
+function init() {
+	obj_table.empty();
+	var str = '<tr>';
+	str += '<th width="5%" align="center">ID</th>';
+	str += '<th width="8%" align="center">类型</th>';
+	str += '<th width="8%" align="center">版本</th>';
+	str += '<th width="8%" align="center">大小</th>';
+	str += '<th width="8%" align="center">URL</th>';
+	str += '<th width="40%" align="center">备注/说明</th>';
+	str += '<th width="17%" align="center">更新时间</th>';
+	str += '<th width="6%" align="center">操作</th>';
+	str += '</tr>';
+	obj_table.append(str);
+	obj_loadmore_div.css('display','none');
+	obj_nomore_div.css('display','none');
+}
+function load(){
+	if (load_btn) {
+		page = 0;
+		type = obj_type.val(); 
+		init();
+		loadmore();
+	}
+}
+function loadmore(){
+	if (load_btn) {
+		page += 1;
+		load_btn = false;
+		$.ajax({
+			'url':'/Admin/Publish/history_api',
+			'type':'POST',
+			'data':{'type':type,'page':page,'state':1},
+			'dataType':'json',
+			'success':function (data){
+				if (data.status == 0) {
+					alert('未登录');
+					window.location.href = '/Admin/Login/index';
+					return;
+				}
+				if (data.code == 1) {
+					var str = '';
+					for(var key in data.data){
+						str += get_table_str(data.data[key]);
+					}
+					obj_table.append(str);
+					obj_loadmore_div.css('display','block');
+				}else if(data.code == 2){
+					obj_loadmore_div.css('display','none');
+					obj_nomore_div.css('display','block');
+				}else if(data.code == 0){
+					alert(data.info);
+				}else{
+					alert('error');
+				}
+				load_btn = true;
+			}
+		});
+	}
+}
+function get_table_str(data){
+	var str = '';
+	str += '<tr id="listdata'+data.id+'">';
+	str += '<td>'+data.id+'</td>';
+	str += '<td>'+get_type_name(data.type)+'</td>';
+	str += '<td>'+data.version+'</td>';
+	str += '<td>'+data.size+'</td>';
+	str += '<td><a title="'+data.url+'" href="'+data.url+'">download</a></td>';
+	str += '<td>'+data.remark+'</td>';
+	str += '<td>'+data.time+'</td>';
+	str += '<td><a class="delete_btn" onclick="delete_version('+data.id+')">删除</a></td>';
+	str += '</tr>';
+	return str;
+}
+function get_type_name(id){
+	if (id>0 && id<6) {
+		return type_name[id];
+	}else{
+		return '未知';
+	}
+}
+function delete_version(id){
+	if (confirm('此操作不会真实删除任务文件！删除后可从回收站恢复！确定删除吗？')) {
+		$.ajax({
+			'url':'/Admin/Publish/history_dml_api',
+			'type':'POST',
+			'data':{'id':id,'flag':'delete'},
+			'dataType':'json',
+			'success':function (data){
+				if (data.status == 0) {
+					alert('未登录');
+					window.location.href = '/Admin/Login/index';
+					return;
+				}
+				if (data.code == 1) {
+					alert('操作成功');
+					$('#listdata'+id).css('display','none');
+				}else if(data.code == 0){
+					alert('操作失败');
+				}else{
+					alert('error');
+				}
+			}
+		});
+	}
+}
+</script>
+</body>
+</head>
+</html>

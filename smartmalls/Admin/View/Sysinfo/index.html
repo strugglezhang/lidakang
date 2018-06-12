@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>网站后台管理-系统信息</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src='/smartbaby/Parent/Public/Js/jquery-1.8.3.min.js'></script>
+
+<body>
+<style type="text/css">
+.f1 {color: #333;font-size: 16px;}
+.d1 {padding: 10px 20px;}
+.title_p {font-size: 18px;color: #55e;padding: 0;margin: 1px 0;;line-height: 1.8;border: 1px solid #555;border-radius: 4px;text-align: center;cursor: pointer;}
+.title_p:hover {background-color: #666;color: white;}
+.detail {padding: 10px;font-size: 14px;border: 1px dashed #888;padding-bottom: 20px;margin: 4px 0 10px 0;}
+.serverinfo {margin: 0 8px;}
+.push_table {border: 1px solid #444;text-align: center;}
+.push_table tr td {padding: 5px 10px;}
+</style>
+<div style="width:1000px;margin:50px auto;background-color:#ccc;">
+	<div class="d1">
+		<p style="font-size:24px;text-align:center;">系统信息</p>
+	</div>
+	<div class="d1">
+		<include file="Menu/index" />
+	</div>
+	<div class="d1">
+		<p class="title_p" onclick="show('redis')">redis</p>
+		<div id="redis" class="detail" style="display: none;">
+			<?php dump($info);?>
+		</div>
+
+		<p class="title_p" onclick="show('apache')">apache</p>
+		<div id="apache" class="detail" style="display: none;">
+			<iframe src="/Admin/Sysinfo/phpinfo" width="930" height="800"></iframe>
+		</div>
+
+		<p class="title_p" onclick="show('websocket')">websocket</p>
+		<div id="websocket" class="detail" style="display: none;">
+			<div id="websocket_info"></div>
+			<div id="websocket_func" style="border-top: 1px dashed #888;margin-top: 10px;">
+				<p>
+					<span class="serverinfo">PPID</span>
+					<span class="serverinfo">PID</span>
+					<span class="serverinfo">PGID</span>
+					<span class="serverinfo">SID</span>
+					<span class="serverinfo">TTY</span>
+					<span class="serverinfo">TPGID</span>
+					<span class="serverinfo">STAT</span>
+					<span class="serverinfo">UID</span>
+					<span class="serverinfo">TIME</span>
+					<span class="serverinfo">COMMAND</span>
+				</p>
+					
+				{$web_serverinfo}
+			</div>
+			<div style="margin-top: 20px;border-top: 1px dashed #888;padding-top: 10px;">
+				<div>
+					<p style="margin: 0;padding: 0;">关闭websocket服务器:</p>
+                    <div style="font-size: 12px;color: #666;padding-left: 15px;">提示：这里只提供关闭websocket服务器功能，要启动websocket服务器则需要手动操作。（用xshell登录服务器，进入/var/www/html/service/websocket目录，执行 php websocket_server.php，或直接执行php /var/www/html/service/websocket/websocket_server.php）；亦可手动关闭服务器，用kill命令杀死以上所有websocket_server线程。</div>
+					<span>权限码:<input autocomplete='off' type="password" id="authcode" style="width: 200px;" value=""></span>
+					<span><button autocomplete='off' disabled="disabled" id="btn_stop" onclick="webserver_stop()">stop</button></span>
+					<span id="webserver_hite"></span>
+				</div>
+				<div id="webserver_notes">
+					
+				</div>		
+			</div>
+            <div style="margin-top: 20px;border-top: 1px dashed #888;padding-top: 10px;">
+            <p style="margin: 0;padding: 0;">推送接收统计:</p>
+                <table class='push_table'>
+                    <tr>
+                        <th>DATE</th>
+                        <th>PUSH</th>
+                        <th>REV</th>
+                    </tr>
+                    <foreach name='push_count' key='k' item='v'>
+                        <tr>
+                            <td>{$k}</td>
+                            <td>{$v.push}</td>
+                            <td>{$v.rev}</td>
+                        </tr>
+                    </foreach>
+                </table>     
+            </div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var click_stop = false;
+	function show(id){
+		if ($('#'+id).css('display') == 'none') {
+			$('#'+id).css('display','block');
+		}else{
+			$('#'+id).css('display','none');
+		}
+	}
+	var msg = $("#websocket_info");
+    // var wsServer = 'ws://123.56.239.27:9501';
+    var wsServer = 'ws://192.168.0.200:9501';
+    var paras = '';
+    var websocket = null;
+    function connect(){
+        paras = 'token={$token}';
+        websocket = null;
+        websocket = new WebSocket(wsServer+'?'+paras);
+        websocket.onopen = function (evt) {
+            // alert(websocket.readyState);
+             // msg.innerHTML = websocket.readyState+'<br />';
+            //websocket.readyState 属性：
+            /*
+            CONNECTING    0    The connection is not yet open.
+            OPEN    1    The connection is open and ready to communicate.
+            CLOSING    2    The connection is in the process of closing.
+            CLOSED    3    The connection is closed or couldn't be opened.
+            */
+            if (websocket.readyState == 1) {
+            	msg.append('工作状态：正常<br />');
+            	$('#btn_stop').removeAttr('disabled');
+            	setTimeout(function(){
+            		song();
+            	},300);
+            }else{
+            	msg.append('无法连接到服务器!<br />');
+            }
+            // alert(websocket.readyState);
+            // msg.innerHTML = websocket.readyState;
+        };
+
+        websocket.onclose = function (evt) {
+        	if (click_stop) {
+        		$('#webserver_notes').append('服务器已关闭!<br />');
+        		
+        	}else{
+        		
+	        	
+            // msg.innerHTML += 'Disconnected<br>';
+           //console.log("Disconnected");
+        	}
+        };
+
+        //onmessage 监听服务器数据推送
+        websocket.onmessage = function (evt) {
+        	var ret = eval('('+evt.data+')');
+        	if (ret.code == 0) {
+        		tips(ret.info,3000);
+        		if (ret.info == 'Unauthorized!') {
+        			$('#webserver_notes').empty();
+        			$('#btn_stop').removeAttr('disabled');
+    				click_stop = false;
+        		}
+        		return;
+        	}
+        	if (ret.flag == 'quit') {
+        		setTimeout(function(){
+        			connect();
+        		},500);
+        		return;
+        	}
+        	if (ret != null && ret.flag == 'info') {
+        		var str = '当前fd：'+ret.fd+'<br />';
+        		str += '在线人数：'+ret.online+'<br />';
+        		str += 'manager_pid:'+ret.manager_pid+'<br />';
+        		str += 'master_pid:'+ret.master_pid+'<br />';
+        		for(var key in ret.setting){
+        			str += key+':'+ret.setting[key]+'<br />';
+        		}
+        		// console.log(ret);
+        		msg.append(str);
+        		setTimeout(function(){
+        			server_stop = 0;
+        			$('#btn_stop').attr('disabled','disabled');
+	        		$('#webserver_hite').text('连接已断开，请在刷新页面后30秒内进行操作！');
+	        		websocket.close();
+        			// alert('close');
+        		},30000);
+        	}else{
+        		msg.append(evt.data);
+        	}
+            // msg.innerHTML += evt.data +'<br>';
+    //        console.log('Retrieved data from server: ' + evt.data);
+        };
+    }
+    function song(){
+        var arr = {'flag':'info'};
+        var str = JSON.stringify(arr);
+        websocket.send(str);
+    }
+    setTimeout(function(){
+    	connect();
+    },500);
+    function webserver_stop(){
+    	var authcode = $('#authcode').val();
+    	if (authcode == '') {
+    		tips('请输入权限码!',3000);
+    		return;
+    	}
+    	var arr = {'flag':'shutdown','authcode':authcode};
+        var str = JSON.stringify(arr);
+        websocket.send(str);
+        $('#btn_stop').attr('disabled','disabled');
+    	click_stop = true;
+    }
+
+
+
+var tips_inter = null;
+function tips(msg,time=0) {
+	clearTimeout(tips_inter);
+	$('.tips').text(msg);
+	$('.tips').animate({top:'-40px'},200);
+	$('.tips').animate({top:'0px'},400);
+	if (time != 0) {
+		tips_inter = setTimeout(function(){
+			$('.tips').animate({top:'-40px'},800);
+		},time+800);
+	}
+}
+</script>
+<div class="tips" style="background-color: #666;color: white;font-size: 16px;text-align: center;height: 40px;line-height: 40px;position: fixed;top:-40px;width: 100%;">
+</div>
+</body>
+</head>
+</html>

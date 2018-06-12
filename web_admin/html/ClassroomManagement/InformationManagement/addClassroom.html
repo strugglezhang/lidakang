@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>新增教室</title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/addActivies.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/fontawesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../../assets/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/form.js"></script>
+    <script type="text/javascript" src="../../../bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/libs/breakpoints.js"></script>
+    <script type="text/javascript" src="../../../plugins/respond/respond.min.js"></script>
+    <script type="text/javascript" src="../../../plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="../../../plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/plugins.form-components.js"></script>
+    <script type="text/javascript" src="../../../assets/js/common/common.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mart20">
+        <div class="col-md-12">
+            <div class="widget box">
+                <div class="widget-content">
+                    <form class="form-horizontal row-border" id="UserInfo" action="#" novalidate="novalidate"
+                          onsubmit="">
+                        <div class="form-wizard">
+                            <div class="form-body">
+                                <div class="tab-content">
+                                    <div  class="infoCont_1">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3"></label>
+                                            <div class="col-md-4">
+                                                <div class="addphoto"><a href="">课程图片上传</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">教室编号</label>
+                                            <div class="col-md-4">
+                                                <div class="gonghao">00001</div>
+                                                <!--    <input type="text" class="form-control has-success" maxlength="6" id="use_name" placeholder="请输入工号">
+                                                   <span class="help-block"></span> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">教室位置<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <input name="position" type="text" class="form-control required" id="number_name"
+                                                       placeholder="位置">
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                       <!--  <div class="form-group">
+                                            <label class="control-label col-md-3">教室对应机构类别</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input type="text" class="form-control required wid_8" >
+                                                <input type="button" class="add_section wid_2" value="添加"
+                                                       style="height:29px"/>
+                                            </div>
+                                        </div> -->
+                                       <!--  <div class="form-group">
+                                            <label class="control-label col-md-3">教室对应机构分类</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input type="text" class="form-control required wid_8" >
+                                                <input type="button" class="add_section wid_2" value="添加"
+                                                       style="height:29px"/>
+                                            </div>
+                                        </div> -->
+                                       <!--  <div class="form-group">
+                                            <label class="control-label col-md-3">教室对应机构行业</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input type="text" class="form-control required wid_8" >
+                                                <input type="button" class="add_section wid_2" value="添加"
+                                                       style="height:29px"/>
+                                            </div>
+                                        </div> -->
+                                      <!--   <div class="form-group">
+                                            <label class="control-label col-md-3">教室对应机构细类</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input type="text" class="form-control required wid_8" >
+                                                <input type="button" class="add_section wid_2" value="添加"
+                                                       style="height:29px"/>
+                                            </div>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">绑定门禁设备</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <select name="equipment_id" class="wid_8">
+                                                    <option value=""></option>
+                                                    <option value=""></option>
+                                                </select>
+                                                <input type="button" class="add_section wid_2" value="添加"
+                                                       style="height:29px"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">最大人数</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input name="max_number" type="text" class="form-control required" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">教室面积</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input name="area" type="text" class="form-control required wid_8" >
+                                                <span class="wid_2 text_aB">平方米</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">教室功能<span
+                                                    class="required">*</span></label>
+                                            <div class="col-md-4">
+                                                <textarea name="use"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">基准价格</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input type="text" name="price" class="form-control required wid_8" >
+                                                <span class="wid_2 text_aB">（每小时／平米／元）</span>
+                                            </div>
+                                        </div>
+                                        <div class="border_divi"></div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">基准折扣的优惠时长</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input  name="discount_time" type="text" class="form-control required wid_8" >
+                                                <span class="wid_2 text_aB">小时</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">基准折扣</label>
+                                            <div class="col-md-4 formcontrolselect1" style="font-size:0px">
+                                                <input type="text" name="discount_rate" class="form-control required wid_8" >
+                                                <span class="wid_2 text_aB">（0-1）的折扣数据</span>
+                                            </div>
+                                        </div>
+                                        <div class="border_divi"></divclass>
+                                    </div>
+                                    <div style="clear:both"></div>
+                                   
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                            <div class="form-actions fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="submit_info">
+                                            <button class="btn btn-primary" type="submit" data-toggle="modal"
+                                                    data-target="#myModal">完 成
+                                            </button>
+                                            <button class="btn btn-default" type="reset">重置</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        console.log(htmlToJson())
+        alert(htmlToJson())
+        
+    })
+</script>
+</html>

@@ -1,0 +1,66 @@
+.Org_detail{
+        width: 1000px;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    .Org_detail .orgniInfo{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        height: auto;
+        /*background: #aaa;*/
+        border-bottom: 1px solid #ccc;
+        width: 1000px;
+    }
+   .Org_detail .orgniInfo.yingye{
+    border-bottom: none;
+   }
+    .Org_detail .orgniInfo .left{
+        float: left;
+        width: 200px;
+       
+    }
+    .Org_detail .orgniInfo .left .img{
+       
+        width: 200px;
+        height: 100px;
+         border: 1px solid #ccc;
+    }
+     .Org_detail .orgniInfo .right{
+        float: left;
+        margin-left: 20px;
+        /*width: 50%;*/
+        width: 600px;
+    }
+    .Org_detail .orgniInfo .right .List_org{
+        float: left;
+        /*width: 25%;*/
+        /*width: 500px;*/
+         width: 310px;
+    }
+     .Org_detail .orgniInfo .right .List_org.left1{
+        width: 220px;
+    }
+    .Org_detail .orgniInfo .right .List_org .cor_2{
+        height: 26px;
+        line-height: 20px;
+       
+    }
+     .Org_detail .orgniInfo .right span{
+       display: block;
+       float: left;
+       width: 100px;
+       text-align: right;
+       font-style: normal;
+       font-weight:normal;
+       margin-right: 10px;
+
+     }
+      .Org_detail .orgniInfo .right label{
+       display: block;
+       float: left;
+       font-style: normal;
+       font-weight:normal
+     }
+      .width_thousand{
+          width:1000px;
+      }

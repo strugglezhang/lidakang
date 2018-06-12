@@ -1,0 +1,466 @@
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+/*文本水平居中*/
+
+.text_lin{
+    text-align: center;
+}
+
+/*分割线*/
+.border_divi{
+    width:100%;
+    height:1px;
+    background: #d0d0d0;
+    margin:10px 0px;
+}
+
+
+/*----商户简介样式---*/
+.border{
+    border:1px solid #7f8080;
+}
+.bord{
+    padding: 10px;
+}
+
+.mar_auto{
+    margin: 0 auto;
+
+}
+
+.id_box{
+    display: inline-block;
+    width:40%;
+    height:100px;
+}
+
+.id_box:first-child{
+    margin-right: 5%;
+}
+
+.bor-ac{
+    border:1px solid black;
+    padding-top:10px;
+
+}
+
+.bor-ac select{
+    margin: 10px 5px;
+}
+.bor-ac label{
+    line-height: 20px;
+}
+.bor-ac label input{
+    height:20px;
+    border:1px solid #7a807c;
+    margin: 0px 10px;
+    width:20%;
+}
+
+/*筹办单位*/
+.danwei{
+    width:100%;
+}
+
+/*确认取消 button*/
+.end_for{
+    width:30%;
+    margin:5px auto;
+}
+.end_for button:first-child{
+    float: left;
+}
+.end_for button:last-child{
+    float:right ;
+}
+
+/*清除浮动*/
+.clearfix:after{
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    zoom: 1;
+}
+
+.form-group{
+    font-size:14px;
+    line-height:20px;
+}
+
+/*文本框*/
+
+.form-group textarea{
+    width:100%;
+    height:100px;
+    resize: none;
+}
+
+/*表单添加和text之间的样式*/
+.form-group .wid_8{
+    width:70%;
+    display: inline-block;
+}
+.form-group .wid_2{
+    display: inline-block;
+    width:30%;
+    font-size:14px;
+    vertical-align: top;
+}
+.form-group span.wid_2{
+    font-size:12px;
+    float:right;
+    padding-left: 2px;
+}
+.form-group .text_aB{
+    padding: 4px;
+}
+.inpB_0{
+    border: 1px solid #6e7a80;
+    height:20px;
+}
+
+
+/*教师图片*/
+.form-group img{
+    height:100px;
+    margin-top: 5px;
+}
+
+/*筹办时间*/
+.form-group select{
+    height:30px;
+}
+
+div.formcontrolselect1 select,.wid_2 select{
+    margin-left: 0px;
+    width:100%;
+}
+
+/*增加课程*/
+.add_section{
+    height:30px;
+}
+
+/*新增会员button样式*/
+
+div button.btn_family{
+    width:50%;
+    line-height: 25px;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    font-size:20px;
+    border:1px solid #807c7e;
+}
+
+
+/*身份证照和营业执照上传*/
+
+div.shop_zhiZ,div.id_Card{
+    width:50%;
+    height:200px;
+    border:1px solid #6a7780;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 200px;
+}
+
+/*折扣样式*/
+
+.annotation{
+    font-size:14px;
+}
+
+.inp_rad label{
+    width:30%;
+}
+
+.inp_rad label input{
+    vertical-align:-2px;
+    margin-right: 2px;
+}
+
+
+/*列表样式*/
+
+.head_title,.head_operation{
+    height:70px;
+    font-size:18px;
+    padding-left: 10px;
+    color:#757575;
+    background: white;
+    /*border-bottom: 1px solid #c8c8c8;*/
+
+}
+.head_title{
+    line-height: 70px;
+    margin-bottom:16px;
+}
+
+.head_title button{
+    margin-top: 22px;
+    margin-right: 21px;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    box-sizing: border-box;
+    background:#00acff;
+    border: 1px solid #00acff!important;
+    color: #fff;
+}
+
+.head_operation{
+    padding-top:20px;
+    margin-bottom: 25px;
+    font-size:15px;
+}
+
+.head_operation select{
+    position: relative;
+    margin: 0px 2px;
+    height:32px;
+    /*font-size:15px !important;*/
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+     appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  box-sizing: border-box;
+}
+/*.head_operation> select option{
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+}*/
+.head-search option{
+    height: 32px!important;
+    line-height: 32px!important;
+    border:none!important;
+    /*background:#ff99cc!important;*/
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+.head_operation>div{
+    width:100%;
+    text-align: center;
+}
+
+
+
+.head_operation .head_sub{
+    background:#00acff;
+    width:67px;
+    margin-left: 20px;
+    /*font-size:15px !important;*/
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    color:white;
+    height: 31px;
+    line-height: 18px!important;
+    border:1px solid #00acff;
+    margin-right:21px;
+}
+
+.head_operation p{
+    display: inline-block;
+    margin: 0px 10px;
+}
+
+.head_operation p.first_pChild{
+    margin-left: 70px;
+}
+
+.head_operation input.four_sub{
+    width:80px;
+}
+/*底部跳转*/
+
+div.jump_to{
+    display: inline-block;
+    height:100%;
+}
+.yhgl-fy-div-samil a{
+    color: #00acff;
+}
+.jump_to input.tj{
+    color:#fff;
+    background: #00acff;
+    border:1px solid #00acff;
+
+    width: 50px;
+     -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+}
+.jump_to select{
+    width: 50px;
+    height:26px;
+    border:1px solid #d0d0d0;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+div.jump_to input{
+    height:28px;
+    margin: 0px 5px;
+    border:1px solid #d0d0d0;
+}
+
+div.jump_to input:first-child:hover{
+    border:1px solid #1c95d0;
+}
+
+div.jump_to .click_jump{
+    width:50px;
+}
+
+/*导出*/
+
+button.derive{
+    line-height: 28px;
+    width: 67px;
+}
+
+button.derive:hover{
+    border:1px solid #1c95d0;
+}
+
+/*新建按钮*/
+.new-add{
+    width:100px;
+    background:#00acff;
+    color: white;
+    float: left;
+     height:32px;
+    border:1px solid #00acff;
+    width:87px;
+    line-height: 18px!important;
+}
+/*.head_operation .new-add{
+    height:32px;
+    border:1px solid #00acff;
+    width:87px;
+    line-height: 32px!important;
+}*/
+/*搜索条件*/
+.head_operation input{
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+
+}
+.head_operation .head-search,.new-add {
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    /*font-size:15px !important;*/
+}
+
+.head_operation .head-search{
+      -moz-appearance: none;
+    -webkit-appearance:none;
+    width:100px;
+    height:32px;
+    border:1px solid #ccc;
+    background: rgba(0, 0, 0, 0) url("../../../assets/img/index/ion_7.png") no-repeat scroll right 5px center;
+    background-size:  8px 4px;
+}
+.head_operation .head-search_input{
+    width: 150px;
+    border:1px solid #ccc;
+    -moz-appearance: none;
+    -webkit-appearance:none;
+    height:32px;
+    line-height: 32px;
+    
+}
+
+.head_operation  .head_left{
+    float: left;
+}
+.head_operation  .head_right{
+    float: right;
+}
+.head_operation .left_select{
+    float: left;
+}
+.head_operation .right_input{
+    float: left;
+    margin-left:6px;
+}
+/*.head_operation .right_input input{
+    float: left;
+}*/
+/*显示 和消失 */
+
+.disBlock{
+    display: inline-block;
+}
+.disNone{
+    display: none;
+}
+
+
+/*详情照片*/
+
+.photoBox{
+    width:250px;
+    height:150px;
+    border:1px solid #aaa;
+}
+
+/*首行缩进*/
+
+.text_ind{
+    text-indent: 2em;
+}
+
+/*图片排列方式*/
+.photo_arrangement li{
+    float: left;
+    width:200px;
+    height:150px;
+    border:1px solid #aaa;
+    margin: 0px 10px 10px 0px;
+}
+
+/*元素内容padding*/
+div.pad_seven{
+    padding-top: 7px;
+}
+
+/*块居中*/
+
+.mar_auto{
+    margin: 0px auto;
+}
+
+
+/*简介样式*/
+div.introdut{
+    width:90%;
+    margin:0px auto;
+}
+div.introdut>div{
+    border:1px solid #aaa;
+    padding:10px;
+}
+div.introdut>h5{
+    font-weight: 600;
+}

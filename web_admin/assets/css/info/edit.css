@@ -1,0 +1,46 @@
+.EditCont{
+	border:1px solid #ccc;
+	width: 366px;
+	height: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left:78px;
+}
+.EditCont .title select{
+	width: 100px;
+	height:25px;
+}
+.EditCont .menu_list{
+	margin-top: 20px;
+}
+.EditCont .menu_list .menu_1_list{
+	width: 206px;
+	border:1px solid #ccc;
+	height: auto;
+}
+.EditCont .menu_list .menu_1_list label{
+	margin-right: 20px;
+	margin-left: 10px;
+}
+.EditCont .menu_submit{
+	margin-top: 20px;
+}
+.EditCont .menu_submit input{
+
+}
+.EditCont .menu_submit .bc{
+	background: #00acff;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	border:1px solid #00acff;
+	color: #fff;
+}
+.EditCont .menu_submit .qx{
+	border:1px solid #00acff;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	background: #fff;
+	margin-left: 43px;
+}

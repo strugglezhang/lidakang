@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>设备安装助手</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src='/smartbaby/Parent/Public/Js/jquery-1.8.3.min.js'></script>
+<body>
+<style type="text/css">
+.f1 {color: #333;font-size: 16px;}
+.d1 {padding: 10px 20px;}
+.title {text-align: right;}
+.logs_div {height: 600px;overflow:auto;background-color:#fff;font-size:12px;}
+.sdata {color: #5a4}
+.status1 {color: #FF4500;padding: 0;margin: 0;}
+.status2 {color: #228B22;padding: 0;margin: 0;}
+.status0 {color: #838B8B;padding: 0;margin: 0;}
+</style>
+<div style="width:1000px;margin:50px auto;background-color:#ccc;">
+	<div class="d1">
+		<p style="font-size:24px;text-align:center;">设备安装助手</p>
+	</div>
+	<div class="d1">
+		<include file='Menu/index' />
+	</div>
+	<div class="d1">
+		<span>
+			学校:
+			<select id="schoolid" autocomplete="off">
+				<option value="0">请选择...</option>
+				<foreach name='schools' item='v' >
+					<option value="{$v.id}">{$v.name}</option>
+				</foreach>
+			</select>
+		</span>
+		<span>
+			设备1:
+			<select id="equipmentid" autocomplete="off">
+				<option value="0">请选择...</option>
+			</select>
+		</span>
+		<span>
+			设备2:
+			<select id="equipmentid2" autocomplete="off">
+				<option value="0">请选择...</option>
+			</select>
+		</span>
+		<span><button autocomplete="off" id="alllog_btn" onclick="set_alllog()">检测全部信息</button></span>
+		<span><button autocomplete="off" id="readlogs_btn" onclick="readlog()">开始检测</button></span>
+		<div style="font-size: 14px;">
+			<div style="font-size: 16px;">说明:</div>
+			<div style="margin-left: 15px;">
+				检测全部信息：<span style="color: #444">检测除了告警外全部设备的返回信息，若选了检测设备，则返回该设备的告警信息，否则不返回任何告警信息.</span>
+			</div>
+			<div style="margin-left: 15px;">
+				仅检测告警：<span style="color: #444">仅返回检测设备的告警信息.</span>
+			</div>
+		</div>
+	</div>
+	<div class="d1">
+		<span style="padding: 0;margin: 0;">日志:</span>
+		<span style="margin-left: 20px;"><button onclick="clearlog(0)">clear</button></span>
+		<span style="margin-left: 20px;">过滤:</span>
+		<span><button onclick="clearlog(2)">进</button></span>
+		<span><button onclick="clearlog(1)">出</button></span>
+		<span><button onclick="clearlog(3)">进/出</button></span>
+		<span><button onclick="clearlog(4)">all</button></span>
+		<div  id="result" class="logs_div">
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+var obj_schoolid = null;
+var obj_equipmentid = null;
+var obj_result = null;
+var obj_equipmentid2 = null;
+var clear_op = 0;
+
+$(window).ready(function(){
+	obj_schoolid = $('#schoolid');
+	obj_result = $('#result');
+	obj_equipmentid = $('#equipmentid');
+	obj_equipmentid2 = $('#equipmentid2');
+	obj_schoolid.change(function(index){
+		getequipments();
+	});
+})
+function getequipments(){
+	var id = obj_schoolid.val();
+	if (id == '0') {
+		return;
+	}
+	$.ajax({
+		'url':'/Admin/Authtag/equipment_list_api',
+		'data':{'schoolid':id},
+		'type':'post',
+		'dataType':'json',
+		success: function(data){
+			if (data.status == 0) {
+				window.location.href = '/Admin/Login/index';
+			}
+			obj_equipmentid.empty();
+			obj_equipmentid2.empty();
+			if (data.code == 1) {
+				var str = '<option value="0">请选择...</option>';
+				for (var i = 0; i < data.data.length; i++) {
+					str += '<option value="'+data.data[i].id+'">'+data.data[i].name+'</option>';
+				}
+				obj_equipmentid.append(str);
+				obj_equipmentid2.append(str);
+			}else if(data.code == 0){
+				tips('failed!'+data.info);
+				return
+			}else if(data.code == 2){
+				tips('该学校未添加设备!');
+				return;
+			}else{
+				tips('error');
+				return;
+			}
+		}
+	});
+}
+var alllog = false;
+function set_alllog(){
+	if (alllog) {
+		alllog = false;
+		$('#alllog_btn').text('检测全部信息');
+	}else{
+		alllog = true;
+		$('#alllog_btn').text('仅检测告警');
+	}
+}
+var read_switch = false;
+var readlogs_handler = null;
+function readlog(){
+	if (read_switch) {
+		read_switch = false;
+		$('#readlogs_btn').text('开始检测');
+	}else{
+		read_switch = true;
+		$('#readlogs_btn').text('停止检测');
+		start_readlogs();
+	}
+}
+function start_readlogs(){
+	clearTimeout(readlogs_handler);
+	var eid = obj_equipmentid.val();
+	var sid = obj_equipmentid2.val();
+	// eid = 1;
+	if (eid == '0' && sid == '0') {
+		tips('至少选择一台设备！');
+		readlog();
+		return;
+	}
+	if (alllog) {
+		var data = {'eid':eid,'sid':sid,'all':1};
+	}else{
+		var data = {'eid':eid,'sid':sid};
+	}
+	$.ajax({
+		type:'post',
+		url:'/Admin/Logs/equipment_logs_api',
+		data:data,
+		dataType:'json',
+		success: function(data){
+			if (status.code == 0) {
+				window.location.href = '/Admin';
+				return;
+			}
+			if (data.code == 1) {
+				console.log(data.data);
+				var str = '';
+				for (var i = 0; i < data.data.length; i++) {
+					str = '';
+					if (data.data[i].flag == 'alarm') {
+						if (data.data[i].ret.status == '0') {
+							if (clear_op != 1 && clear_op != 2 && clear_op != 3) {
+								str = '<p class="status0"><span class="sdata">REV</span>:' + date_format(parseInt(data.data[i].ret.time));
+							}else{
+								str = '<p class="status0" style="display:none"><span class="sdata">REV</span>:' + date_format(parseInt(data.data[i].ret.time));
+							}
+							str += ' status:0';
+							str += ' info:' + ((data.data[i].info).split(','))[1];
+						}else{
+							if (data.data[i].ret.status == '1') {
+								if (clear_op == 2) {
+									str = '<p class="status1" style="display:none"><span class="sdata">REV</span>:' + date_format(parseInt(data.data[i].ret.time));
+								}else{
+									str = '<p class="status1"><span class="sdata">REV</span>:' + date_format(parseInt(data.data[i].ret.time));
+								}
+							}else if(data.data[i].ret.status == '2'){
+								if (clear_op == 1) {
+									str = '<p class="status2" style="display:none"><span class="sdata">REV</span>:' + date_format(parseInt(data.data[i].ret.time));
+								}else{
+									str = '<p class="status2"><span class="sdata">REV</span>:' + date_format(parseInt(data.data[i].ret.time));
+								}
+							}else{
+								str = '<p class="status'+data.data[i].ret.status+'"><span class="sdata">REV</span>:' + date_format(parseInt(data.data[i].ret.time));
+							}
+							str += ' status:' + data.data[i].ret.status;
+							for (var j in data.data[i].ret.returnstr) {
+								str += ' '+data.data[i].ret.studentinfo[j].sname+'(' + j+'):'+data.data[i].ret.returnstr[j]+',';
+							}
+							// str += ' ->info:' + data.data[i].info;
+						}
+					}else{
+						str += ' <p class="other_info"><span class="sdata">REV</span>: ';
+						str += data.data[i].info;
+					}
+					str += '</p>';
+					// str += JSON.stringify(data.data);
+
+					// str += '-> ';
+					// for (var j in data.data[i].ret.returnstr) {
+					// 	str += j+':'+data.data[i].ret.returnstr[j]+',';
+					// }
+					// if (data.data[i].info != null) {
+					// 	str += data.data[i].info;
+					// }
+					// echo(str);
+					obj_result.prepend(str);
+				}
+				tips('message！',5000);
+			}else if(data.code == 2){
+				// tips('error! '+data.info);
+			}else{
+				tips('error');
+			}
+
+			if (read_switch && (data.code == 1 || data.code == 2)) {
+				readlogs_handler = setTimeout(function(){
+					start_readlogs();
+				},2000);
+			}
+		}
+	});
+}
+function clearlog(type){
+	clear_op = type;
+	if (type == 0) {
+		obj_result.empty();
+	}else if(type == 1){
+		$('.status1').css('display','block');
+		$('.status2').css('display','none');
+		$('.status0').css('display','none');
+	}else if(type == 2){
+		$('.status1').css('display','none');
+		$('.status2').css('display','block');
+		$('.status0').css('display','none');
+	}else if(type == 3){
+		$('.status1').css('display','block');
+		$('.status2').css('display','block');
+		$('.status0').css('display','none');
+	}else if(type == 4){
+		$('.status1').css('display','block');
+		$('.status2').css('display','block');
+		$('.status0').css('display','block');
+	}
+}
+function date_format(timestamp){
+	var time = new Date(timestamp*1000);
+	// var y = time.getFullYear();
+	// var m = time.getMonth()+1;
+	// var d = time.getDate();
+	var h = time.getHours();
+	var mm = time.getMinutes();
+	var s = time.getSeconds();
+	// return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+	return add0(h)+':'+add0(mm)+':'+add0(s);
+}
+function add0(m){return m<10?'0'+m:m }
+function echo(msg,type){
+	type = 1;
+	msg = '<span class="sdata">REV</span>: '+msg;
+	if (type == 1) {
+		obj_result.prepend(msg+'<br />');
+	}else{
+		obj_result.append(msg+'<br />');
+	}
+}
+var tips_inter = null;
+function tips(msg,time=3000) {
+	clearTimeout(tips_inter);
+	$('.tips').text(msg);
+	$('.tips').animate({top:'-40px'},200);
+	$('.tips').animate({top:'0px'},400);
+	if (time != 0) {
+		tips_inter = setTimeout(function(){
+			$('.tips').animate({top:'-40px'},800);
+		},time+800);
+	}
+}
+</script>
+<div class="tips" style="background-color: #666;color: white;font-size: 16px;text-align: center;height: 40px;line-height: 40px;position: fixed;top:-40px;width: 100%;">
+</div>
+</body>
+</head>
+</html>

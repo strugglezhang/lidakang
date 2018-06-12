@@ -1,0 +1,32 @@
+<style type="text/css">
+.links {margin: 0 10px;}
+</style>
+<div>
+	<span class="links"><a href="/Admin/Index/index">首页</a></span>
+	<span class="links"><a href="/Admin/Publish/app">发布新版APP</a></span>
+	<span class="links"><a href="/Admin/Publish/history">查看APP版本更新记录</a></span>
+	<span class="links"><a href="/Admin/Authtag/index">标签入库</a></span>
+	<span class="links"><a href="/Admin/Logs/equipment">设备安装助手</a></span>
+	<span class="links"><a href="/Admin/Sysinfo/index">系统信息</a></span>
+	<span class="links"><a href="/Admin/Systools/index">系统工具</a></span>
+	<span class="links"><a href="/Admin/Feedback/index">用户反馈</a></span>
+	<span class="links"><a href="/Admin/Home/logout">退出</a></span>
+</div>
+<!-- <script type="text/javascript">
+function logout() {
+	$.ajax({
+		'url':'/Admin/Home/logout_api',
+		'type':'POST',
+		'dataType':'json',
+		'success':function (data){
+			if (data.code == 1) {
+				window.location.href = '/Admin/Login/index';
+			}else if(data.code == 0){
+				alert(data.info);
+			}else{
+				alert('error');
+			}
+		}
+	});
+}
+</script> -->

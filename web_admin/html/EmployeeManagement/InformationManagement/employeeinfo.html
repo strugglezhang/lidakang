@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>商场员工详细信息</title>
+    <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../assets/css/info/addActivies.css"rel="stylesheet">
+    <link href="../../../assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../../../assets/js/jquery-1.7.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row mart20">
+        <div class="col-md-12">
+            <div class="widget box">
+                <div class="head_title">
+                    张三详细信息
+                </div>
+                <div class="addphoto"><a href="">头像</a></div>
+                <div class="widget-content">
+                    <form class="form-horizontal row-border" id="UserInfo" action="#" novalidate="novalidate"
+                          onsubmit="">
+                        <div class="form-wizard">
+                            <div class="form-body">
+                                <div class="tab-content">
+                                    <div class="infoCont">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">工号</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="number"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">卡号</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="mall_id"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">姓名</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="name"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">性别</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="sex_name"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">籍贯</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="birth_address"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">出生日期</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="birthday"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">身份证</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="id_number"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">所在地址</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="address"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">所在部门</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="dept_name"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">所处职位</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="position_name"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">入职时间</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="join_time"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">合同到期时间</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="last_login_time"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="infoCont">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">婚姻状况</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="marriage_name"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">健康状况</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="health_name">健康</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">民族</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="nation">汉族</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">学历</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="education_name">大专</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">专业</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="major">计算机专业</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">毕业学校</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="school">桂林电子科技大学</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">联系电话</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="phone">15461358413</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">紧急联系人</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="emergency_contacts">李四</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">紧急联系电话</label>
+                                            <div class="col-md-4">
+                                                <div class="pad_seven" id="emergency_phone">19426763464</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="clear:both"></div>
+                                    <div style="clear: both;overflow: hidden;"></div>
+                                </div>
+                            </div>
+                            <div style="clear:both"></div>
+                           <!--  <div class="form-actions fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="submit_info">
+                                            <button class="btn btn-primary" type="submit" data-toggle="modal"
+                                                    data-target="#myModal">完 成
+                                            </button>
+                                            <button class="btn btn-default" type="submit">返回</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+
+    /*
+    * 因为每个div都有个class  所以我就传了个 columnNames
+    * 其他的就差不多跟修改的一样
+    * */
+    getUpdateData("http://120.76.218.161/smartmalls/Mall/Worker/worker_view_api",{"worker_id": "20" },$(".pad_seven"));
+    function getUpdateData(url,param,columnNames){
+        var paramData = paseJson(param)
+
+        $.post(url, param, function(data){
+            var jsonData = jQuery.parseJSON(data);
+            var code = jsonData.code
+            var html = ""
+            if(code=='1'){
+                var valueData = jsonData.data
+                $.each(columnNames,function(k1,column){
+                   var t_Id = column.id;
+                   if(valueData[t_Id] && $("#"+t_Id)){
+                       $("#"+t_Id).html(valueData[t_Id]);
+                   }
+
+                });
+            }else{
+                alert(jsonData.info)
+            }
+        });
+    }
+
+    function paseJson(str){
+        return jQuery.parseJSON(str);
+    }
+</script>
+</html>

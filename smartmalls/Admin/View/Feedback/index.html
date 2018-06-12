@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>网站后台管理-APP用户反馈</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src='/smartbaby/Parent/Public/Js/jquery-1.8.3.min.js'></script>
+
+<body>
+<style type="text/css">
+p {padding: 0;margin: 0;}
+.f1 {color: #333;font-size: 16px;}
+.d1 {padding: 10px 20px;}
+.title {font-size: 20px;color: #000;text-align: center;line-height: 4;}
+.content {background-color: #fff;height: 400px;}
+.feedback_list {overflow: auto;width: 960px;height: 300px;}
+.list_title {background-color: #3b3;overflow: hidden;zoom:1;}
+.list_title > div {font-size: 16px;font-weight: 700;color: #333;line-height: 3;}
+.list {overflow: hidden;zoom:1;width: 940px;border-top: 1px solid #ccc;font-size: 14px;line-height: 2.4;}
+.date {text-align: center;float: left;width: 137px;font-size: 12px;}
+.feedback_title {text-align: center;float: left;width: 600px;}
+.feedback {text-align: left;float: left;width: 580px;line-height: 1.4;padding: 5px 10px; word-wrap: break-word;}
+.status {text-align: center;float: left;width: 80px;}
+.action {text-align: center;float: left;width:120px;height: 100%;}
+.action > span {margin: 0 2px;}
+.loadmore {display: none;}
+.loadmore > p {font-size: 16px;text-align: center;line-height: 3;color: #33a;cursor: pointer;border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;}
+.loadmore > p:hover {background-color: #3a3;color: #fff;}
+.checked, .finished {cursor: pointer;color: #33a;}
+.checked:hover, .finished:hover {color: #3a3;}
+.notview {color: #a33;}
+.notfinished {color: #aa3;}
+.done {color: #3a3;}
+.tips {width: 200px;height: 100px;background-color: #7a7;position: fixed;right: 50px;top: -100px;}
+.tips_title {height: 30px;background-color: #3a3;overflow: hidden;zoom:1;}
+.tips_head {color: #fff;padding-left: 10px;font-size: 16px;line-height: 30px;float: left;}
+.tips_close {color: #fff;font-size: 20px;float: right;padding: 0 5px;cursor: pointer;}
+.tips_close:hover {background-color: #fff;font-size: 16px;color: #a33;border-top: 2px solid #3a3;border-right: 2px solid #3a3;}
+.tips_content {padding: 5px 10px;font-size: 14px;color: #fff;height: 60px;overflow: hidden;}
+</style>
+<div style="width:1000px;margin:50px auto;background-color:#ccc;">
+	<div class="d1">
+		<p style="font-size:24px;text-align:center;">APP用户反馈</p>
+	</div>
+	<div class="d1">
+		<include file="Menu/index" />
+	</div>
+
+    <div style="padding: 20px;overflow: hidden;zoom:1;border-top:1px solid #fff">
+        <!-- <span style="float:left;">权限密码：<input type="password" name="psw" id="authcode"></span> -->
+        <span style="float:left;margin-left:20px;">自动检测：
+            <select id="timeset">
+                <option value="0">无</option>
+                <option value="10">10秒</option>
+                <option value="30">30秒</option>
+                <option value="60">1分</option>
+                <option value="120">2分</option>
+                <option value="300">5分</option>
+                <option value="600">10分</option>
+            </select>
+        </span>
+        <span style="margin-left:20px;"><button style="cursor:pointer" onclick="init();">确定</button></span>
+        <span style="margin-left:20px;">自动更新：<button id="albut" style="cursor:pointer" onclick="setAutoLoad();">关闭</button></span>
+        <span style="margin-left:20px;"><span style="cursor:pointer" onclick="alarm();" title="点击试听">声音提示</span>：<button id="alarmbut" style="cursor:pointer" onclick="setAlarm();">关闭</button></span>
+        <div>
+            <p style="">说明：</p>
+            <!-- <p style="font-size:12px;padding-left:20px;">1. 权限密码分为两种，一种只能查看，另一种能查看也能操作。</p> -->
+            <p style="font-size:12px;padding-left:20px;">1. 自动检测是一定时间内检测是否有新反馈，有则提示。</p>
+            <p style="font-size:12px;padding-left:20px;">2. 自动更新是设置了自动检测，在检测到有新反馈时自动加载新的数据，默认为开启。</p>
+            <p style="font-size:12px;padding-left:20px;">3. 有新反馈时是否声音提示，默认为开启。</p>
+        </div>
+    </div>
+
+    <div style="padding: 20px;border-top:1px solid #fff">
+        <p class="title" style="">家长反馈</p>
+        <div class="content" style="">
+            <div class="list_title">
+                <div class="date">时间</div>
+                <div class="feedback_title">内容</div>
+                <div class="status">状态</div>
+                <div class="action">操作</div>
+            </div>
+            <div class="feedback_list p_fb"></div>
+            <div class="loadmore pmore">
+                <p>加载更多</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 20px;border-top:1px solid #fff">
+        <p class="title" style="">教师反馈</p>
+        <div class="content" style="">
+            <div class="list_title">
+                <div class="date">时间</div>
+                <div class="feedback_title">内容</div>
+                <div class="status">状态</div>
+                <div class="action">操作</div>
+            </div>
+            <div class="feedback_list t_fb"></div>
+            <div class="loadmore tmore">
+                <p>加载更多</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 20px;border-top:1px solid #fff">
+        <p class="title" style="">园长反馈</p>
+        <div class="content" style="">
+            <div class="list_title">
+                <div class="date">时间</div>
+                <div class="feedback_title">内容</div>
+                <div class="status">状态</div>
+                <div class="action">操作</div>
+            </div>
+            <div class="feedback_list l_fb"></div>
+            <div class="loadmore lmore">
+                <p>加载更多</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tips">
+        <div class="tips_title">
+            <span class="tips_head">提示</span>
+            <span class="tips_close" onclick="close_tips();">X</span>
+        </div>
+        <div class="tips_content">
+            
+        </div>
+    </div>
+    <div id='alarm'></div>
+</div>
+<script type="text/javascript">
+var autoload = true;
+var autoalarm = true;
+var tips_speed = 500;
+var tips_inter = null;
+var list_inter = null;
+// var authcode = null;
+var timeset = null;
+var l_sid = 0;
+var t_sid = 0;
+var p_sid = 0;
+var eid = 0;
+var sid = 0;
+var newsid = 0;
+function tips(msg,time=0) {
+    clearTimeout(tips_inter);
+    $('.tips').animate({top:'-100px'},200);
+    $('.tips_content').text(msg);
+    $('.tips').animate({top:'5px'},tips_speed);
+    if (time != 0) {
+        tips_inter = setTimeout(function(){
+            $('.tips').animate({top:'-100px'},tips_speed);
+        },time+tips_speed);
+    }
+}
+function close_tips() {
+    clearTimeout(tips_inter);
+    $('.tips').animate({top:'-100px'},tips_speed);
+}
+function init() {
+    // authcode = $('#authcode').val();
+    // if (authcode == '') {
+    //     tips('请输入权限码！',5000);
+    //     return;
+    // }
+    var time = parseInt($('#timeset').val());
+    if (timeset != time) {
+        timeset = time;
+    }
+    l_sid = 0;
+    t_sid = 0;
+    p_sid = 0;
+    eid = 0;
+    sid = 0;
+    hide_more(0);
+    $('.feedback_list').empty();
+    getData('list');
+}
+
+function getData(flag,type=0,dd='old',size=20) {
+    var url = "/Admin/Feedback/info_api";
+    var pdata = null;
+    if (flag == 'news') {
+        pdata = {'flag':flag};
+    }else{
+        var id = eid;
+        if (dd == 'old') {
+            if (type == 0) {
+                id = sid;
+            }else if(type == 2){
+                id = l_sid;
+            }else if(type == 3){
+                id = t_sid;
+            }else if(type == 4){
+                id = p_sid;
+            }else{
+                return;
+            }
+        }
+        pdata = {'flag':flag,'type':type,'eid':id,'dd':dd,'size':size};
+    }
+    $.ajax({
+        type:'post',
+        url:url,
+        data:pdata,
+        dataType:'json',
+        success: function(data){
+            if (data.status == 0) {
+                window.location.href = '/Admin/Login';
+                return;
+            }
+            if (data.code == 0) {
+                tips(data.info,5000);
+                return;
+            }else if(data.code == 2){
+                if (flag == 'news') {
+                    tips(data.info,5000);
+                }else{
+                    tips(data.info,5000);
+                    hide_more(type);
+                }
+            }else if(data.code == 1){
+                if (flag == 'news') {
+                    var nid = parseInt(data.eid);
+                    if (eid != 0 && nid>newsid && nid-eid>0) {
+                        tips('有'+(nid-eid)+'条新反馈！');
+                        newsid = nid;
+                        if (autoalarm) {
+                            alarm();
+                        }
+                        if (autoload) {
+                            clearTimeout(list_inter);
+                            setTimeout(function() {
+                                getData('list',0,'new');
+                            }, 2000);
+                        }
+                    }
+                }else{
+                    var length = data.data.length;
+                    if (length < size) {
+                        hide_more(type);
+                    }else{
+                        hide_more(type,'block');
+                    }
+                    if (dd == 'old') {
+                        if (type == 0) {
+                            l_sid = data.data[length-1].id;
+                            t_sid = l_sid;
+                            p_sid = l_sid;
+                            sid = l_sid;
+                        }else if(type == 2){
+                            l_sid = data.data[length-1].id;
+                        }else if(type == 3){
+                            t_sid = data.data[length-1].id;
+                        }else if(type == 4){
+                            p_sid = data.data[length-1].id;
+                        }
+                        if (eid == 0) {
+                            eid = parseInt(data.data[0].id);
+                            newsid = eid;
+                        }
+                        showData(data.data,1);
+                    }else{
+                        eid = parseInt(data.data[length-1].id);
+                        newsid = eid;
+                        showData(data.data,2);
+                    }
+                    tips('加载了'+length+'条数据！',4000);
+                }
+            }else{
+                tips('无法识别返回数据！',3000);
+            }
+            if (timeset != 0) {
+                clearTimeout(list_inter);
+                list_inter = setTimeout(function() {
+                    getData('news');
+                }, timeset*1000);
+            }
+        }
+    });
+}
+function showData(data,type=1) {
+    var l = data.length;
+    var l_str = '';
+    var t_str = '';
+    var p_str = '';
+    var e_count = 0;
+    for (var i = 0; i < l; i++) {
+        var str = '<div class="list"><div class="date">'+data[i].time+'</div>';
+        str += '<div class="feedback">'+data[i].content+'</div>';
+        if (data[i].view == '0') {
+            str += '<div id="fb'+data[i].id+'" class="status notview">未查看</div><div class="action"><span class="checked" onclick="checked('+data[i].id+')" id="cfb'+data[i].id+'">已查看</span><span class="finished" onclick="finished('+data[i].id+')" id="ffb'+data[i].id+'">已处理</span></div>';
+        }else if(data[i].view == '1'){
+            str += '<div id="fb'+data[i].id+'" class="status notfinished">未处理</div><div class="action"><span>已查看</span><span class="finished" onclick="finished('+data[i].id+')" id="ffb'+data[i].id+'">已处理</span></div>';
+        }else if(data[i].view == '2'){
+            str += '<div class="status done">已处理</div><div class="action"><span>已查看</span><span>已处理</span></div>';
+        }else{
+            str += '<div class="status">未知</div><div class="action"><span>已查看</span><span>已处理</span></div>';
+        }
+        str += '</div>';
+        switch(data[i].type){
+            case '2':
+                l_str += str;
+                break;
+            case '3':
+                t_str += str;
+                break;
+            case '4':
+                p_str += str;
+                break;
+            default:
+                e_count++;
+                break;
+        }
+    }
+    if (e_count != 0) {
+        tips('有'+e_count+'条未知类型数据！',5000);
+    }
+    if (l_str != '') {
+        if (type == 1) {
+            $('.l_fb').append(l_str);
+        }else{
+            $('.l_fb').prepend(l_str);
+        }
+    }
+    if (t_str != '') {
+        if (type == 1) {
+            $('.t_fb').append(t_str);
+        }else{
+            $('.t_fb').prepend(t_str);
+        }
+    }
+    if (p_str != '') {
+        if (type == 1) {
+            $('.p_fb').append(p_str);
+        }else{
+            $('.p_fb').prepend(p_str);
+        }
+    }
+}
+function hide_more(type,display='none'){
+    if (type == 0) {
+        $('.loadmore').css('display',display);
+    }else if(type == 2){
+        $('.lmore').css('display',display);
+    }else if(type == 3){
+        $('.tmore').css('display',display);
+    }else if(type == 4){
+        $('.pmore').css('display',display);
+    }
+}
+function setAutoLoad() {
+    if (autoload) {
+        $('#albut').text('开启');
+        autoload = false;
+    }else{
+        $('#albut').text('关闭');
+        autoload = true;
+    }
+}
+function setAlarm() {
+    if (autoalarm) {
+        $('#alarmbut').text('开启');
+        autoalarm = false;
+    }else{
+        $('#alarmbut').text('关闭');
+        autoalarm = true;
+    }
+}
+function checked(id) {
+    if(confirm("确定已查看？")){
+        updateFB(id,1);
+    }
+}
+function finished(id) {
+    if(confirm("确定已处理？")){
+        updateFB(id,2);
+    }
+}
+function updateFB(id,view) {
+    var url = "/Admin/Feedback/info_api";
+    var pdata = {'flag':'view','id':id,'action':view};
+    $.ajax({
+        type:'post',
+        url:url,
+        data:pdata,
+        dataType:'json',
+        success: function(data){
+            if (data.status == 0) {
+                window.location.href = '/Admin/Login';
+                return;
+            }
+            if (data.code == 1) {
+                tips('修改成功!',2000);
+                var cfbid = $('#cfb'+id);
+                cfbid.removeClass('checked');
+                cfbid.removeAttr('onclick');
+                if (view == 1) {
+                    $('#fb'+id).removeClass('notview').addClass('notfinished').text('未处理');
+                }else if(view == 2){
+                    var ffbid = $('#ffb'+id);
+                    ffbid.removeClass('finished');
+                    ffbid.removeAttr('onclick');
+                    $('#fb'+id).removeClass('notview').removeClass('notfinished').addClass('done').text('已处理');
+                }
+            }else{
+                tips('修改失败！'+data.info,3000);
+            }
+        }
+    })
+}
+function alarm() {
+    $('#alarm').html('<audio autoplay="autoplay"><source src="/smartbaby/Admin/Public/Audio/feedback.mp3" type="audio/mpeg"/></audio>');
+}
+$(window).ready(function(){
+    $('.lmore').click(function(){
+        getData('list',2);
+    })
+    $('.tmore').click(function(){
+        getData('list',3);
+    })
+    $('.pmore').click(function(){
+        getData('list',4);
+    })
+})
+</script>
+</div>
+</body>
+</head>
+</html>

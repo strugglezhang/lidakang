@@ -1,0 +1,565 @@
+
+<!DOCTYPE html>
+<html lang="en">  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>智能商场管理平台</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/fontawesome/font-awesome.min.css">
+     <link href="assets/css/info/style.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="assets/js/libs/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/libs/breakpoints.js"></script>
+    <script type="text/javascript" src="plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="plugins/respond/respond.min.js"></script>
+  </head>
+  <body>
+
+    <!--头部begin-->
+    <div class="header navbar navbar-fixed-top" role="banner">
+      <div class="container">
+        <div class="IndexNav_left">
+            <a class="navbar-brand" href="#"><strong>智能商场管理平台</strong></a> 
+            <a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation"><i class="icon-reorder"></i></a>
+       </div>
+        <div class="IndexNav_center"> 
+          <ul class="Nav_Index">
+            <li class="Nav_title"><a href="index.html"></i>首页</a></li> 
+            <li class="Nav_title"><a href="./html/EmployeeManagement/InformationManagement/info_admin.html" target="rightCont">员工管理</a></li>
+            <li class="Nav_title"><a href="./html/MemberManagement/infoadmin.html" target="rightCont">会员管理</a></li>
+            <li class="Nav_title"><a href="./html/OrganizationalManagement/Employeeinfo/infoAdmin.html"  target="rightCont">机构管理</a></li>
+            <li class="Nav_title"><a href="./html/MerchantManagement/Employeeinfo/infoadmin.html" target="rightCont">商户管理</a></li>
+            <li class="Nav_title"><a href="javascript:;" target="rightCont">教室管理</a></li>
+            <li class="Nav_title"><a href="javascript:;" target="rightCont">商铺管理</a></li>
+            <li class="Nav_title"><a href="javascript:;" target="rightCont">商品管理</a></li>
+            <li class="Nav_title"><a href="javascript:;" target="rightCont">服务管理</a></li>
+            <li class="Nav_title"><a href="javascript:;" target="rightCont">消费管理</a></li>
+ <!--            <li class="Nav_title"><a href="javascript:;" target="">活动管理</a></li>
+            <li class="Nav_title"><a href="javascript:;" target="">会员卡管理</a></li> -->
+            <li class="Nav_title"><a href="javascript:;" target="index.html">更多</a></li>
+          </ul>
+        </div>
+        <div class="IndexNav_right">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown user"id="right_nav">
+            <a href="#"  class="dropdown-toggle" data-toggle="dropdown">
+              <span class="username">张三</span>
+              <span class="username">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+             <i class="icon-caret-down small"></i>
+            </a>
+            <ul class="dropdown_menu">
+              <li><a href=""><i class="icon-user"></i>我的资料</a></li>
+              <li><a href=""><i class="icon-calendar"></i>会员管理</a></li>
+              <li><a href="#"><i class="icon-tasks"></i>教师管理</a></li>
+              <li><a href=""><i class="icon-key"></i>退出</a></li>
+            </ul>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--头部over-->
+    <div id="container">
+        <!--左侧导航begin-->
+      <div id="sidebar" class="sidebar-fixed">
+        <div id="sidebar-content">
+          <!-- 员工管理 开始 -->
+            <ul id="nav" class="nav_left_1">
+              <!-- <li><a href="index.html"target="rightCont"></i>首页</a></li> -->
+              <li class="navstyle"><a href="./html/EmployeeManagement/InformationManagement/info_admin.html"  target="rightCont"><i class="icon-angle-right"></i>员工信息管理</a></li>
+              <li class="navstyle"><a href="./html/EmployeeManagement/EmployeeAttendance/todayAttendance.html"  target="rightCont"><i class="icon-angle-right"></i>今日考勤</a></li>
+              <li class="navstyle"><a href="./html/EmployeeManagement/EmployeeAttendance/" target="rightCont"><i class="icon-angle-right"></i>考勤设定</a></li>
+              <li class="navstyle"><a href="./html/EmployeeManagement/EmployeeAttendance/attendanceDetail.html"  target="rightCont"/><i class="icon-angle-right"></i>考勤明细</a></li>
+              <li class="navstyle"><a href="./html/EmployeeManagement/EmployeeAttendance/attendanceStat.html" target="rightCont" /><i class="icon-angle-right"></i>考勤统计</a></li>
+              <li class="navstyle"><a href="./html/EmployeeManagement/EmployeeAttendance/attendanceReview.html"  target="rightCont" / ><i class="icon-angle-right"></i>考勤评审</a></li>
+            </ul>
+            <!-- 员工管理结束 -->
+             <!--  <a href="#"><i class="icon-cogs"></i>员工管理</a>
+              <ul class="sub-menu">
+               <li><a  href="#"><i class="icon-angle-right"></i>员工信息管理</a>
+                  <ul  class="sub-menu">
+                      <li><a href="./html/EmployeeManagement/InformationManagement/info_admin.html"  target="rightCont">员工信息管理（管理员）</a></li>
+                      <li><a href="./html/EmployeeManagement/InformationManagement/addEmployee.html" target="rightCont">新增员工</a></li>
+                      <li><a href="./html/EmployeeManagement/InformationManagement/employeeinfo.html" target="rightCont">员工详细信息</a></li>
+                      <li><a href="#" target="rightCont">修改员工</a></li>
+                      <li><a href="#" target="rightCont">员工查询结果页面</a></li>
+                      <li><a href="./html/EmployeeManagement/InformationManagement/info_Nonadmin.html" target="rightCont">员工信息管理－（非管理员权限）</a></li>
+                  </ul>
+               </li>
+                <li><a href="#"><i class="icon-angle-right"></i>员工考勤管理</a>
+                     <ul  class="sub-menu">
+                      <li><a href="./html/EmployeeManagement/EmployeeAttendance/todayAttendance.html"  target="rightCont">今日考勤</a></li>
+                      <li><a href="" target="rightCont">考勤设定</a></li>
+                      <li><a href="./html/EmployeeManagement/EmployeeAttendance/attendanceDetail.html"  target="rightCont"/>考勤明细</a></li>
+                      <li><a href="./html/EmployeeManagement/EmployeeAttendance/attendanceStat.html" target="rightCont" />考勤统计</a></li>
+                      <li><a href="./html/EmployeeManagement/EmployeeAttendance/attendanceReview.html"  target="rightCont" / >考勤评审</a></li>
+                     
+                  </ul>
+                </li>
+              </ul>
+            </li> -->
+             <ul id="nav" class="nav_left_2">
+              <li><a href="./html/MemberManagement/infoadmin.html"  target="rightCont">会员信息管理－（管理员权限）</a></li>
+            </ul>
+             
+     <!--        <li>
+              <a href="javascript:void(0);">
+                <i class="icon-desktop"> </i>会员管理
+              </a>
+              <ul class="sub-menu">
+                <li><a href="#"><i class="icon-angle-right"></i>会员信息管理</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/MemberManagement/infoadmin.html"  target="rightCont">会员信息管理－（管理员权限）</a></li>
+                      <li><a href="./html/MemberManagement/infoNonadmin.html"  target="rightCont">会员信息管理－（非管理员权限）</a></li>
+                      <li><a href="./html/MemberManagement/memberinfo.html"  target="rightCont">会员详细信息</a></li>
+                      <li><a href="./html/MemberManagement/memberQuery.html"  target="rightCont">会员查询结果页面</a></li>
+                      <li><a href="./html/MemberManagement/addMember.html"  target="rightCont">新增会员</a></li>
+                      <li><a href="./html/MemberManagement/"  target="rightCont">修改会员</a></li>
+                      
+                    </ul>
+                </li>
+              </ul>
+            </li>-->
+            <ul id="nav" class="nav_left_3">
+             <li><a href="./html/OrganizationalManagement/InformationManagement/infoadmin.html"  target="rightCont">机构信息管理－（管理员权限）</a></li>
+             <li><a href="">机构信息操作日志</a></li>
+              <li><a href="./html/OrganizationalManagement/Employeeinfo/infoAdmin.html"  target="rightCont">员工信息管理－（管理员权限）</a></li>
+            </ul>
+           <!--  <li>
+              <a href="javascript:void(0);"><i class=" icon-sitemap"></i>机构管理</a>
+              <ul class="sub-menu">
+               <li><a href="#"><i class="icon-angle-right"></i>员工信息管理</a>
+                    <ul  class="sub-menu">
+                        <li><a href="./html/OrganizationalManagement/Employeeinfo/infoadmin.html"  target="rightCont">员工信息管理－（管理员权限）</a></li>
+                        <li><a href="./html/OrganizationalManagement/Employeeinfo/addemployee.html"  target="rightCont">新增员工</a></li>
+                        <li><a href="./html/OrganizationalManagement/Employeeinfo/"  target="rightCont">修改员工</a></li>
+                        <li><a href="./html/OrganizationalManagement/Employeeinfo/QueryResult.html"  target="rightCont">员工查询结果页面</a></li>
+                        <li><a href="./html/OrganizationalManagement/Employeeinfo/infoNonadmin.html"  target="rightCont">员工信息管理－（非管理员权限）</a></li>
+                        <li><a href="./html/OrganizationalManagement/Employeeinfo/employeeinfo.html"  target="rightCont">员工详细信息</a></li>
+                    
+                    </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>机构信息管理</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/OrganizationalManagement/InformationManagement/infoadmin.html"  target="rightCont">机构信息管理－（管理员权限）</a></li>
+                      <li><a href="./html/OrganizationalManagement/InformationManagement/infoNonadmin.html"  target="rightCont">机构信息管理－（非管理员权限）</a></li>
+                      <li><a href="./html/OrganizationalManagement/InformationManagement/addOrganizational.html"  target="rightCont">新增机构</a></li>
+                      <li><a href="./html/OrganizationalManagement/InformationManagement/"  target="rightCont">修改机构</a></li>
+                      <li><a href="./html/OrganizationalManagement/InformationManagement/organizationaDetail.html"  target="rightCont">机构详情页</a></li>
+                      <li><a href="./html/OrganizationalManagement/InformationManagement/agencyQuery.html"  target="rightCont">机构查询结果页面</a></li>
+                    </ul>
+                </li>
+               
+                <li><a href="#"><i class="icon-angle-right"></i>机构审核管理</a>
+                      <ul  class="sub-menu">
+                        <li><a href="./html/OrganizationalManagement/OrganizationAudit/index.html"  target="rightCont">机构审核管理</a></li>
+                      </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>机构计费管理</a>
+                      <ul  class="sub-menu">
+                          <li><a href="./html/OrganizationalManagement/BillingManagement/index.html"  target="rightCont">机构计费管理</a></li>
+                      </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>机构计费审核</a>
+                      <ul  class="sub-menu">
+                         <li><a href="./html/OrganizationalManagement/BillingAudit/index.html"  target="rightCont">机构计费审核</a></li>
+                      </ul>
+                </li>
+              </ul>
+            </li> -->
+            <ul id="nav"class="nav_left_4">
+              <li><a href="./html/MerchantManagement/InformationManagement/infoAdmin.html"  target="rightCont">商户信息管理（管理员权限）</a></li>
+            
+              <li><a href="./html/MerchantManagement/Employeeinfo/infoadmin.html"  target="rightCont">员工信息管理－（管理员权限）</a></li>
+            </ul>
+           <!--  <li>
+              <a href="javascript:void(0);"><i class="icon-cog"></i>商户管理</a>
+              <ul class="sub-menu">
+               <li><a href="#"><i class="icon-angle-right"></i>员工信息管理</a>
+                    <ul  class="sub-menu">
+                        <li><a href="./html/MerchantManagement/Employeeinfo/infoadmin.html"  target="rightCont">员工信息管理－（管理员权限）</a></li>
+                        <li><a href="./html/MerchantManagement/Employeeinfo/addemployee.html"  target="rightCont">新增员工</a></li>
+                        <li><a href="./html/MerchantManagement/Employeeinfo/"  target="rightCont">修改员工</a></li>
+                        <li><a href="./html/MerchantManagement/Employeeinfo/QueryResult.html"  target="rightCont">员工查询结果页面</a></li>
+                        <li><a href="./html/MerchantManagement/Employeeinfo/infoNonadmin.html"  target="rightCont">员工信息管理－（非管理员权限）</a></li>
+                        <li><a href="./html/MerchantManagement/Employeeinfo/infoemployee.html"  target="rightCont">员工详细信息</a></li>
+                    
+                    </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>商户信息管理</a>
+                     <ul  class="sub-menu">
+                      <li><a href="./html/MerchantManagement/InformationManagement/infoAdmin.html"  target="rightCont">商户信息管理（管理员权限）</a></li>
+                      <li><a href="./html/MerchantManagement/InformationManagement/infoNonadmin.html"  target="rightCont">商户信息管理（非管理员权限）</a></li>
+                      <li><a href="./html/MerchantManagement/InformationManagement/addMerchant.html"  target="rightCont">新增商户</a></li>
+                      <li><a href="./html/MerchantManagement/InformationManagement/merchantDetail.html"  target="rightCont">商户详情</a></li>
+
+                      <li><a href="./html/MerchantManagement/InformationManagement/QueryResult.html"  target="rightCont">商户查询结果页面</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>商户审核管理</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/MerchantManagement/Audit/index.html"  target="rightCont">商户审核管理</a></li>
+                     
+                    </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>商户计费管理</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/MerchantManagement/Billing/index.html"  target="rightCont">商户计费管理</a></li>
+                     
+                    </ul>
+                </li>
+
+                <li><a href="#"><i class="icon-angle-right"></i>商户计费审核</a>
+                <ul  class="sub-menu">
+                      <li><a href="./html/MerchantManagement/BillingAudit/index.html"  target="rightCont">商户计费审核</a></li>
+                     
+                    </ul>
+                </li>
+              </ul>
+            </li> -->
+             <ul id="nav" class="nav_left_5">
+              <li><a href="./html/ClassroomManagement/InformationManagement/infoAdmin.html"  target="rightCont">教室信息管理－（管理员权限）</a></li>
+             
+               <li><a href="./html/ClassroomManagement/InformationAudit/Audit.html"  target="rightCont">教室信息审核</a></li>
+             <li><a href="./html/ClassroomManagement/ClassroomDiscount/discount_m.html"  target="rightCont">教室折扣管理</a></li>
+            </ul>
+           <!--  <li>
+              <a href="javascript:void(0);"><i class="icon-cog"></i>教室管理</a>
+              <ul class="sub-menu">
+                <li><a href="#"><i class="icon-angle-right"></i> 教室折扣管理</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/ClassroomManagement/ClassroomDiscount/discount_m.html"  target="rightCont">教室折扣管理</a></li>
+                      <li><a href="./html/ClassroomManagement/ClassroomDiscount/addDiscount.html"  target="rightCont">新增折扣</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>教室折扣审核</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/ClassroomManagement/DiscountAudit/index.html"  target="rightCont">教室折扣审核</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>教室退订计费管理</a>
+                   <ul  class="sub-menu">
+                      <li><a href="./html/ClassroomManagement/BillingManagement/classroomDiscount.html"  target="rightCont">教室退订计费管理</a></li> -->
+                      <!-- <li><a href="./html/ClassroomManagement/BillingManagement/"  target="rightCont">修改退订计费</a></li> -->
+                 <!--    </ul> 
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>教室退订计费审核</a></li>
+                <li><a href="#"><i class="icon-angle-right"></i>教室信息审核</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/ClassroomManagement/InformationAudit/Audit.html"  target="rightCont">教室信息审核</a></li>
+                    </ul> 
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>教室信息管理</a>
+                    <ul  class="sub-menu">
+                      <li><a href="./html/ClassroomManagement/InformationManagement/infoAdmin.html"  target="rightCont">教室信息管理－（管理员权限）</a></li>
+                      <li><a href="./html/ClassroomManagement/InformationManagement/infoNonadmin.html"  target="rightCont">教室信息管理－（非管理员权限）</a></li>
+                      <li><a href="./html/ClassroomManagement/InformationManagement/classroomDetail.html"  target="rightCont">教室详情页</a></li>
+                      <li><a href="./html/ClassroomManagement/InformationManagement/addClassroom.html"  target="rightCont">新增教室</a></li>
+                      <li><a href="./html/ClassroomManagement/InformationManagement/"  target="rightCont">修改教室</a></li>
+                      <li><a href="./html/ClassroomManagement/InformationManagement/classRoomQuery.html"  target="rightCont">教室查询结果页面</a></li>
+                    </ul> 
+                </li>
+                <li><a href="#"><i class="icon-angle-right"></i>教室使用动态</a></li>
+                <li><a href="#"><i class="icon-angle-right"></i>教室预订动态</a></li>
+              </ul>
+            </li>
+            <li>-->
+               <ul id="nav" class="nav_left_6">
+                 <li><a href="./html/ShopsManagement/InformationManagement/infoAdmin.html"  target="rightCont">商铺信息管理－（管理员权限）</a></li>
+                 <li><a href="./html/ShopsManagement/InfoAudit/index.html"  target="rightCont">商铺信息审核</a></li>
+               </ul>
+               <!--  <a href="javascript:void(0);"><i class="icon-money"></i>商铺管理</a>
+                <ul class="sub-menu">
+                    <li><a href="#"><i class="icon-angle-right"></i>商铺信息管理</a>
+                          <ul  class="sub-menu">
+                            <li><a href="./html/ShopsManagement/InformationManagement/infoAdmin.html"  target="rightCont">商铺信息管理－（管理员权限）</a></li>
+                            <li><a href="./html/ShopsManagement/InformationManagement/infoNonadmin.html"  target="rightCont">商铺信息管理－（非管理员权限）</a></li>
+                            <li><a href="./html/ShopsManagement/InformationManagement/shopsDetail.html"  target="rightCont">商铺详情</a></li>
+
+                            <li><a href="./html/ShopsManagement/InformationManagement/addShops.html"  target="rightCont">新增商铺</a></li>
+                            <li><a href="./html/ShopsManagement/InformationManagement/QueryResult.html"  target="rightCont">商铺查询结果页面</a></li>
+                           </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>商铺信息审核</a>
+                        <ul  class="sub-menu">
+                            <li><a href="./html/ShopsManagement/InfoAudit/index.html"  target="rightCont">商铺信息审核</a></li>
+                           </ul> 
+                    </li>
+                </ul>
+            </li> -->
+            <ul id="nav" class="nav_left_7">
+               <li><a href="./html/GoodsManagement/InformationManagement/infoAdmin.html"  target="rightCont">商品信息管理（管理员权限）</a></li>
+                <li><a href="./html/GoodsManagement/GoodsBilling/indexadmin.html"  target="rightCont">商品会员计费－（管理员权限）</a></li>
+                  <li><a href="./html/GoodsManagement/InfoAudit/index.html"  target="rightCont">商品信息审核－（管理员权限）</a></li>
+                          
+            </ul>
+             <!-- <li>
+                <a href="javascript:void(0);"><i class="icon-money"></i>商品管理</a>
+                <ul class="sub-menu">
+                    <li><a href="#"><i class="icon-angle-right"></i>商品信息管理</a>
+                          <ul  class="sub-menu">
+                            <li><a href="./html/GoodsManagement/InformationManagement/infoAdmin.html"  target="rightCont">商品信息管理（管理员权限）</a></li>
+                            <li><a href="./html/GoodsManagement/InformationManagement/infoNonadmin.html"  target="rightCont">商品信息管理（非管理员权限）</a></li>
+                            <li><a href="./html/GoodsManagement/InformationManagement/addgoods.html"  target="rightCont">新增商品</a></li>
+                            <li><a href="./html/GoodsManagement/InformationManagement/QueryResult.html"  target="rightCont">商品查询结果页面</a></li>
+                           </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>商品信息审核</a>
+                         <ul  class="sub-menu">
+                           
+                            <li><a href="./html/GoodsManagement/InfoAudit/index.html"  target="rightCont">商品信息审核－（管理员权限）</a></li>
+                           </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>商品会员计费</a>
+                        <ul  class="sub-menu">
+                             <li><a href="./html/GoodsManagement/GoodsBilling/indexadmin.html"  target="rightCont">商品会员计费－（管理员权限）</a></li>
+                             <li><a href="./html/GoodsManagement/GoodsBilling/addBilling.html"  target="rightCont">新增计费</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>商品会员计费审核</a>
+                    <ul  class="sub-menu">
+                             <li><a href="./html/GoodsManagement/BillingAudit/indexadmin.html"  target="rightCont">商品会员计费审核－（管理员权限）</a></li>
+                        
+                        </ul>
+                    </li>
+                </ul>
+            </li> -->
+             <ul id="nav" class="nav_left_8"> 
+                 <li><a href="./html/ServiceManagement/InformationManagement/serviceInforAdmin.html"  target="rightCont">服务信息管理－（管理员权限）</a></li>
+                 <li><a href="./html/ServiceManagement/MemberBilling/indexAdmin.html"  target="rightCont">服务会员计费－（管理员权限）</a></li>
+                  <li><a href="./html/ServiceManagement/InformationAudit/comInforAudit.html"  target="rightCont">服务信息审核－（管理员权限）</a></li>
+             </ul>
+            <!--  <li>
+                <a href="javascript:void(0);"><i class="icon-money"></i>服务管理</a>
+                <ul class="sub-menu">
+                    <li><a href="#"><i class="icon-angle-right"></i>服务信息管理</a>
+                         <ul  class="sub-menu">
+                             <li><a href="./html/ServiceManagement/InformationManagement/serviceInforAdmin.html"  target="rightCont">服务信息管理－（管理员权限）</a></li>
+                             <li><a href="./html/ServiceManagement/InformationManagement/serviceInforNonadmin.html"  target="rightCont">服务信息管理－（非管理员权限）</a></li>
+                             <li><a href="./html/ServiceManagement/InformationManagement/addSerice.html"  target="rightCont">新增服务</a></li>
+                             <li><a href="./html/ServiceManagement/InformationManagement/serveQuery.html"  target="rightCont">服务查询结果页面</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="javascript:void(0);"><i class="icon-angle-right"></i>服务信息审核</a>
+                         <ul  class="sub-menu">
+                             <li><a href="./html/ServiceManagement/InformationAudit/comInforAudit.html"  target="rightCont">服务信息审核－（管理员权限）</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="javascript:void(0);"><i class="icon-angle-right"></i>服务会员计费</a>
+                         <ul  class="sub-menu">
+                             <li><a href="./html/ServiceManagement/MemberBilling/indexAdmin.html"  target="rightCont">服务会员计费－（管理员权限）</a></li>
+                             <li><a href="./html/ServiceManagement/MemberBilling/addBilling.html"  target="rightCont">新增计费</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>服务会员计费审核</a>
+                         <ul  class="sub-menu">
+                             <li><a href="./html/ServiceManagement/MemberBillingAudit/BillingAudit.html"  target="rightCont">服务会员计费审核－（管理员权限）</a></li>
+                        </ul> 
+                    </li>
+                </ul>
+            </li> -->
+             <ul id="nav" class="nav_left_9">
+                <li><a href="./html/CourseManagement/InformationManagement/index.html"  target="rightCont">课程信息管理</a></li>
+                <li><a href="./html/CourseManagement/PlanManagement/index.html"  target="rightCont">课程计划管理</a></li>
+              </ul>
+             <!-- <li>
+                <a href="javascript:void(0);"><i class="icon-money"></i>课程管理</a>
+                <ul class="sub-menu">
+                    <li><a href="#"><i class="icon-angle-right"></i>课程信息管理</a>
+                       <ul  class="sub-menu">
+                             <li><a href="./html/CourseManagement/InformationManagement/index.html"  target="rightCont">课程信息管理</a></li>
+                             <li><a href="./html/CourseManagement/InformationManagement/addCourses.html"  target="rightCont">新增课程</a></li>
+                             <li><a href="./html/CourseManagement/InformationManagement/QueryResult.html"  target="rightCont">课程查询结果页面</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>课程折扣</a>
+                          <ul  class="sub-menu">
+                             <li><a href="./html/CourseManagement/CourseDiscount/index.html"  target="rightCont">课程折扣管理</a></li>
+                             <li><a href="./html/CourseManagement/CourseDiscount/DiscountAudit.html"  target="rightCont">课程折扣审核</a></li>
+                             <li><a href="./html/CourseManagement/CourseDiscount/AddDiscount.html"  target="rightCont">新增折扣</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>课程计划管理</a>
+
+                        <ul  class="sub-menu">
+                             <li><a href="./html/CourseManagement/PlanManagement/index.html"  target="rightCont">课程计划管理</a></li>
+                             <li><a href="./html/CourseManagement/PlanManagement/registDetails.html"  target="rightCont">课程报名人详情</a></li>
+                        </ul> 
+                    </li>
+                </ul>
+            </li> -->
+            <ul id="nav" class="nav_left_10">
+              <li><a href="./html/ConsumeMangement/Rechargedetails/index.html"  target="rightCont">会员充值明细</a></li>
+              <li><a href="./html/ConsumeMangement/Consumptiondetails/index.html"  target="rightCont">会员消费明细</a></li>
+              <li><a href="./html/ConsumeMangement/ConsumerStat/index.html"  target="rightCont">会员消费统计</a></li>
+            </ul>
+           <!--  <li>
+                <a href="javascript:void(0);"><i class="icon-money"></i>消费管理</a>
+                <ul class="sub-menu">
+                    <li><a href="#"><i class="icon-angle-right"></i>会员充值明细</a>
+                         <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/Rechargedetails/index.html"  target="rightCont">会员充值明细</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>会员消费明细</a>
+                      <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/Consumptiondetails/index.html"  target="rightCont">会员消费明细</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>会员消费统计</a>
+                        <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/ConsumerStat/index.html"  target="rightCont">会员消费统计</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>机构消费明细</a>
+                        <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/jg_Consumerdetails/index.html"  target="rightCont">机构消费明细</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>机构收入明细</a>
+                         <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/jg_incomeDetail/index.html"  target="rightCont">机构收入明细</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>机构消费统计</a>
+                        <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/jg_ConsumerStat/index.html"  target="rightCont">机构消费统计</a></li>
+                        </ul> 
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>机构收入统计</a>
+                        <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/jg_incomeStat/index.html"  target="rightCont">机构收入统计</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><i class="icon-angle-right"></i>机构返款统计</a>
+                         <ul  class="sub-menu">
+                             <li><a href="./html/ConsumeMangement/Returnstatistics/index.html"  target="rightCont">机构返款统计</a></li>
+                        </ul> 
+                    </li>
+                </ul>
+            </li> -->
+             <ul id="nav" class="nav_left_11">
+                 <li><a href="./html/ActivityManagement/InformationManagement/activeInfo.html"  target="rightCont">活动信息管理</a></li>
+                <li><a href="./html/ActivityManagement/registration/index.html"  target="rightCont">活动报名管理</a></li>
+                <li><a href="./html/ActivityManagement/activeAudit/index.html"  target="rightCont">活动审核－（管理员权限）</a></li>
+             </ul>
+           <!--   <li>
+                <a href="javascript:void(0);"><i class="icon-money"></i>活动管理</a>
+                <ul class="sub-menu">
+                  <li><a href="#"><i class="icon-angle-right"></i>活动管理</a>
+                      <ul  class="sub-menu">
+                             <li><a href="./html/ActivityManagement/InformationManagement/activeInfo.html"  target="rightCont">活动信息管理</a></li>
+                             <li><a href="./html/ActivityManagement/InformationManagement/activedetail.html"  target="rightCont">活动信息管理</a></li>
+                             <li><a href="./html/ActivityManagement/InformationManagement/addActivity.html"  target="rightCont">新增活动</a></li>
+                             <li><a href="./html/ActivityManagement/InformationManagement/QueryResult.html"  target="rightCont">活动查询结果页面</a></li>
+                             
+                        </ul>
+                  </li>
+                  <li><a href="#"><i class="icon-angle-right"></i>活动报名管理</a>
+                      <ul  class="sub-menu">
+                             <li><a href="./html/ActivityManagement/registration/index.html"  target="rightCont">活动报名管理</a></li>
+                             <li><a href="./html/ActivityManagement/registration/dtails.html"  target="rightCont">活动报名详情</a></li>
+                        </ul>
+                  </li>
+                  <li><a href="#"><i class="icon-angle-right"></i>活动审核</a>
+                        <ul  class="sub-menu">
+                             <li><a href="./html/ActivityManagement/activeAudit/index.html"  target="rightCont">活动审核－（管理员权限）</a></li>
+                        </ul>
+                  </li>
+                </ul>
+            </li> -->
+            <ul id="nav" class="nav_left_12">
+                       <li><a href="./html/MemberCardManagement/infoAudit.html" target="rightCont">商铺信息审核</a></li>
+                      <li><a href="./MemberCardManagement/activated.html" target="rightCont">会员卡激活</a></li>
+                      <li><a href="./html/MemberCardManagement/repaircard.html" target="rightCont">会员补卡</a></li>
+                      <li><a href="./html/MemberCardManagement/recharge.html" target="rightCont">卡充值</a></li>
+                      <li><a href="./MemberCardManagement/refund.html" target="rightCont">退款</a></li>
+                      <li><a href="./html/MemberCardManagement/refundAudit.html" target="rightCont">退款审核</a></li>
+                      <li><a href="./html/MemberCardManagement/balanceInquiry.html" target="rightCont">余额查询</a></li>
+              </ul>
+           <!--   <li>
+                <a href="javascript:void(0);"><i class="icon-money"></i>会员卡管理</a>
+                <ul class="sub-menu">
+                      <li><a href="./html/MemberCardManagement/infoAudit.html" target="rightCont"><i class="icon-angle-right"></i>商铺信息审核</a></li>
+                      <li><a href="./MemberCardManagement/activated.html" target="rightCont"><i class="icon-angle-right"></i>会员卡激活</a></li>
+                      <li><a href="./html/MemberCardManagement/repaircard.html" target="rightCont"><i class="icon-angle-right"></i>会员补卡</a></li>
+                      <li><a href="./html/MemberCardManagement/recharge.html" target="rightCont"><i class="icon-angle-right"></i>卡充值</a></li>
+                      <li><a href="./MemberCardManagement/refund.html" target="rightCont"><i class="icon-angle-right"></i>退款</a></li>
+                      <li><a href="./html/MemberCardManagement/refundAudit.html" target="rightCont"><i class="icon-angle-right"></i>退款审核</a></li>
+                      <li><a href="./html/MemberCardManagement/balanceInquiry.html" target="rightCont"><i class="icon-angle-right"></i>余额查询</a></li>
+                </ul>
+            </li> -->
+             <ul id="nav" class="nav_left_13">
+               <li><a href="./html/AccountManagement/role.html" target="rightCont">角色管理</a></li>
+                  <li><a href="./html/AccountManagement/Accountnumber.html" target="rightCont">账号管理</a></li>
+                  <li><a href="./html/AccountManagement/menu.html" target="rightCont">菜单管理</a></li>
+                  <li><a href="./html/AccountManagement/FunctionManagement.html"  target="rightCont">功能管理</a></li>
+              <ul>
+            <!--  <li>
+                <a href="javascript:void(0);"><i class="icon-money"></i>账号管理</a>
+                <ul class="sub-menu">
+                  <li><a href="./html/AccountManagement/role.html" target="rightCont"><i class="icon-angle-right"></i>角色管理</a></li>
+                  <li><a href="./html/AccountManagement/Accountnumber.html" target="rightCont"><i class="icon-angle-right"></i>账号管理</a></li>
+                  <li><a href="./html/AccountManagement/menu.html" target="rightCont"><i class="icon-angle-right"></i>菜单管理</a></li>
+                  <li><a href="./html/AccountManagement/FunctionManagement.html"  target="rightCont"><i class="icon-angle-right"></i>功能管理</a></li>
+                </ul>
+            </li> -->  
+          
+        </div>
+        <div class="resizeable"></div>
+      </div>
+        <!--左侧导航over-->
+        <!--右侧begin-->
+        <div id="content">
+            <div id="mainFrameContainer">
+                <iframe src="index-in.html" allowtransparency="true" style="background-color=transparent" title="test" frameborder="0" id="mainFrame" scrolling="no" name="rightCont"></iframe>
+            </div>
+        </div>
+        <!--右侧over-->
+    </div>
+
+
+  </body>
+<script>
+$(function(){
+    //从首页点击进入对应的功能管理模块
+    //员工管理
+    var nav_left_1 = $(".nav_left_1").show();
+    window.open ("./html/EmployeeManagement/InformationManagement/info_admin.html" , "rightCont","nav_left_1");
+    //右上角我的资料//退出
+    $(".dropdown_menu").hide();
+    $("#right_nav").hover(function(){
+      $(".dropdown_menu").show();
+    },function(){
+      $(".dropdown_menu").hide();
+    });
+    //点击导航切换
+    $(".Nav_title").click(function(){
+        $(this).removeClass("Nav_title");
+        $(this).addClass("on");
+        $(this).siblings().removeClass("on");
+        $(this).siblings().addClass("Nav_title");
+    });
+     //点击左侧菜单切换
+    $(".navstyle").click(function(){
+        $(this).removeClass("navstyle");
+        $(this).addClass("navSelect");
+        $(this).siblings().removeClass("navSelect");
+        $(this).siblings().addClass("navstyle");
+    });
+});
+$(document).ready(function(){
+    App.init();
+    /*Plugins.init();
+    FormComponents.init()*/
+}); 
+</script>
+</html>

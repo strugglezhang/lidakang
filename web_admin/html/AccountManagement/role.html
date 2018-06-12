@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>角色管理</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/icons.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/info/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/fontawesome/font-awesome.min.css" rel="stylesheet">
+    <link href="../../assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="../../assets/css/style2.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="../../assets/css/info/addActivies.css">
+
+    <script type="text/javascript" src="../../assets/js/libs/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../../bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body style="background: #f2f2f2">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal row-border" id="UserInfo" action="#" novalidate="novalidate" onSubmit="">
+                <div class="hdgl_list">
+                    <div class="tabbable tabbable-custom jlbhd-ztsx-box">
+                        <div class="head_title">
+                            角色管理
+                        </div>
+                        <div class="head_operation">
+                            <div>
+                                <input type="button" value="新增角色" class="new-add">&nbsp;
+                               
+                                <input type="text" placeholder="请输入商品编号/商品名称" class="head-search">
+                                <input type="button" value="查询" class="head_sub">
+                            </div>
+                        </div>
+                      
+                        <div class="tab-content hdgl-content-tabel">
+                            <div class="tab-pane active" id="tab_1_1">
+                                <div class="col-md-12">
+                                    <div class="widget box">
+                                        <div class="widget-content">
+                                            <table class="table table-hover table-striped table-bordered table-highlight-head">
+                                                <thead>
+                                                <tr>
+                                                    <th class="checkbox-column sorting_disabled" role="columnheader"
+                                                        rowspan="1" colspan="1" aria-label=" "><input type="checkbox">
+                                                    </th>
+                                                    
+                                                    <th>角色编号</th>
+                                                    <th>角色名称</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="listInput">
+                                                <tr>
+                                                    <td class="checkbox-column  sorting_1"><input type="checkbox"></td>
+                                                   
+                                                   <td>001</td>
+                                                    
+                                                    <td class="remarks">
+                                                        <span class="">请假</span>
+                                                        <select class="disNone">
+                                                            <option value="请假">请假</option>
+                                                            <option value="公出">公出</option>
+                                                            <option value="无">无</option>
+                                                            <option value="病假">病假</option>
+                                                        </select>
+                                                    </td>
+                                                   <td>
+                                                        <a href="" class="js_del">删除</a>
+                                                        <button class="alter">修改</button>
+                                                        <button class="att_save disNone">保存</button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="yhgl-fy-div">
+                                    <div class="yhgl-fy-div-samil">
+                                        <div class="jump_to"><input type="button" value="点击">跳转到<input type="text">
+                                        <b>12</b>页
+                                        </div>
+
+                                        <button class="btn btn-sm">下一页</button>
+                                        <a href="">1</a><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a><a
+                                            href="">6</a><a href="">7</a><a href="">8</a><span>...</span>
+                                        <button class="btn btn-sm">上一页</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_1_2">
+                                <div class="col-md-12">
+                                    <div class="widget box">
+                                        <div class="widget-content">
+                                            <table class="table table-hover table-striped table-bordered table-highlight-head">
+                                                <thead>
+                                                <tr>
+                                                    <th class="checkbox-column sorting_disabled" role="columnheader"
+                                                        rowspan="1" colspan="1" aria-label=" "><input type="checkbox">
+                                                    </th>
+                                                    <th>操作</th>
+                                                    <th>头像</th>
+                                                    <th>姓名</th>
+                                                    <th>所在地</th>
+                                                    <th>部门</th>
+                                                    <th>时间</th>
+                                                    <th>上班时间</th>
+                                                    <th>上班考勤</th>
+                                                    <th>备注</th>
+                                                    <th>下班时间</th>
+                                                    <th>下班考勤</th>
+                                                    <th>备注</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="listInput">
+                                                <tr>
+                                                    <td class="checkbox-column  sorting_1"><input type="checkbox"></td>
+                                                    <td>
+                                                        <button class="alter">修改</button>
+                                                        <button class="att_save disNone">保存</button>
+                                                    </td>
+                                                    <td><img src="../../assets/img/1.png"></td>
+                                                    <td>张三</td>
+                                                    <td>北京朝阳</td>
+                                                    <td>信息部</td>
+                                                    <td>2017.06.01</td>
+                                                    <td>9：00</td>
+                                                    <td>异常</td>
+                                                    <td class="remarks">
+                                                        <span class="">请假</span>
+                                                        <select class="disNone">
+                                                            <option value="请假">请假</option>
+                                                            <option value="公出">公出</option>
+                                                            <option value="无">无</option>
+                                                            <option value="病假">病假</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>18：00</td>
+                                                    <td>正常</td>
+                                                    <td class="remarks">
+                                                        <span class="">请假</span>
+                                                        <select class="disNone">
+                                                            <option value="请假">请假</option>
+                                                            <option value="公出">公出</option>
+                                                            <option value="无">无</option>
+                                                            <option value="病假">病假</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="yhgl-fy-div">
+                                    <div class="yhgl-fy-div-samil">
+                                        <div class="jump_to"><input type="button" value="点击">跳转到<input type="text"
+                                                                                                       class="click_jump">页/共
+                                            <b>12</b>页
+                                        </div>
+
+                                        <button class="btn btn-sm">下一页</button>
+                                        <a href="">1</a><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a><a
+                                            href="">6</a><a href="">7</a><a href="">8</a><span>...</span>
+                                        <button class="btn btn-sm">上一页</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_1_3">
+                                <div class="col-md-12">
+                                    <div class="widget box">
+                                        <div class="widget-content">
+                                            <table class="table table-hover table-striped table-bordered table-highlight-head">
+                                                <thead>
+                                                <tr>
+                                                    <th class="checkbox-column sorting_disabled" role="columnheader"
+                                                        rowspan="1" colspan="1" aria-label=" "><input type="checkbox">
+                                                    </th>
+                                                    <th>操作</th>
+                                                    <th>头像</th>
+                                                    <th>姓名</th>
+                                                    <th>所在地</th>
+                                                    <th>部门</th>
+                                                    <th>时间</th>
+                                                    <th>上班时间</th>
+                                                    <th>上班考勤</th>
+                                                    <th>备注</th>
+                                                    <th>下班时间</th>
+                                                    <th>下班考勤</th>
+                                                    <th>备注</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="listInput">
+                                                <tr>
+                                                    <td class="checkbox-column  sorting_1"><input type="checkbox"></td>
+                                                    <td>
+                                                        <button class="alter">修改</button>
+                                                        <button class="att_save disNone">保存</button>
+                                                    </td>
+                                                    <td><img src="../../assets/img/1.png"></td>
+                                                    <td>张三</td>
+                                                    <td>北京朝阳</td>
+                                                    <td>信息部</td>
+                                                    <td>2017.06.01</td>
+                                                    <td>9：00</td>
+                                                    <td>异常</td>
+                                                    <td class="remarks">
+                                                        <span class="">请假</span>
+                                                        <select class="disNone">
+                                                            <option value="请假">请假</option>
+                                                            <option value="公出">公出</option>
+                                                            <option value="无">无</option>
+                                                            <option value="病假">病假</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>18：00</td>
+                                                    <td>正常</td>
+                                                    <td class="remarks">
+                                                        <span class="">请假</span>
+                                                        <select class="disNone">
+                                                            <option value="请假">请假</option>
+                                                            <option value="公出">公出</option>
+                                                            <option value="无">无</option>
+                                                            <option value="病假">病假</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="yhgl-fy-div">
+                                    <div class="yhgl-fy-div-samil">
+                                        <div class="jump_to"><input type="button" value="点击">跳转到<input type="text"
+                                                                                                       class="click_jump">页/共
+                                            <b>12</b>页
+                                        </div>
+
+                                        <button class="btn btn-sm">下一页</button>
+                                        <a href="">1</a><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a><a
+                                            href="">6</a><a href="">7</a><a href="">8</a><span>...</span>
+                                        <button class="btn btn-sm">上一页</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- 删除提示 开始 -->
+<div class="modal fade" id="DeBrand" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content tishi">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="tankang_style"><p>确认要删除吗？</p></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger width-100">确认</button>
+                <button type="button" class="btn width-100" data-dismiss="modal">取 消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除提示结束 -->
+<div class="success"></div>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $('#DeBrand').show().delay(2000).hide(0);
+        // $("#duanwuclose").click(function(){
+        //   $(".duanwu").hide();
+    })
+//    })
+    $(".alter").on("click",function(){
+//        console.log($(this).parent());
+        $(this).removeClass('disBlock').addClass('disNone');
+        $(this).siblings().removeClass('disNone').addClass('disBlock');
+        $(this).parent().siblings(".remarks").children('span').removeClass("disBlock").addClass("disNone");
+        $(this).parent().siblings(".remarks").children('select').removeClass("disNone").addClass("disBlock");
+    })
+    $(".att_save").on("click",function(){
+        $(this).removeClass('disBlock').addClass('disNone');
+        $(this).siblings().removeClass('disNone').addClass('disBlock');
+        $(this).parent().siblings(".remarks").children("span").eq(0).html($(this).parent().siblings(".remarks").children("select").eq(0).val());
+        $(this).parent().siblings(".remarks").children("span").eq(1).html($(this).parent().siblings(".remarks").children("select").eq(1).val());
+        $(this).parent().siblings(".remarks").children('span').removeClass("disNone").addClass("disBlock");
+        $(this).parent().siblings(".remarks").children('select').removeClass("disBlock").addClass("disNone");
+    })
+
+</script>
+</html>

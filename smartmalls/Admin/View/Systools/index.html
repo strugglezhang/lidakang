@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>网站后台管理-系统工具</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src='/smartbaby/Parent/Public/Js/jquery-1.8.3.min.js'></script>
+
+<body>
+<style type="text/css">
+.f1 {color: #333;font-size: 16px;}
+.d1 {padding: 10px 20px;}
+.title_p {font-size: 18px;color: #55e;padding: 0;margin: 1px 0;;line-height: 1.8;border: 1px solid #555;border-radius: 4px;text-align: center;cursor: pointer;}
+.title_p:hover {background-color: #666;color: white;}
+.detail {padding: 10px;font-size: 14px;border: 1px dashed #888;padding-bottom: 20px;margin: 4px 0 10px 0;}
+.ret_data {color: #484;}
+</style>
+<div style="width:1000px;margin:50px auto;background-color:#ccc;">
+	<div class="d1">
+		<p style="font-size:24px;text-align:center;">系统工具</p>
+	</div>
+	<div class="d1">
+		<include file="Menu/index" />
+	</div>
+	<div class="d1">
+        <p class="title_p" onclick="show('websocket')">websocket</p>
+        <div id="websocket" class="detail" style="display: none;">
+            <div style="margin-top: 10px;">
+                <span>
+                    type:
+                    <select id="login_type" autocomplete='off'>
+                        <option value="p">parent</option>
+                        <option value="t">teacher</option>
+                    </select>
+                </span>
+                <span>
+                    phone:
+                    <input type="text" name="" id="phone" maxlength="11">
+                </span>
+                <span><button onclick="connect()">connect</button></span>
+            </div>
+            <div id="funcs" style="margin-top: 10px;">
+                <div>
+                    flag:
+                    <select id='flag' autocomplete='off'>
+                        <option onclick="change()" selected="selected" value="push">push</option> 
+                        <option onclick="change()" value="news">news</option>    
+                        <option onclick="change()" value="heartbeat">heartbeat</option>    
+                        <option onclick="change()" value="close">close</option>    
+                    </select>
+                    type:
+                    <select id='type' autocomplete='off'>
+                        <option onclick="change2()" selected="selected" value="school">school</option>    
+                        <option onclick="change2()" value="class">class</option>    
+                        <option onclick="change2()" value="teacher">teacher</option>    
+                        <option onclick="change2()" value="parent">parent</option>    
+                        <option onclick="change2()" value="school_t">school_t</option>    
+                        <option onclick="change2()" value="school_p">school_p</option>    
+                        <option onclick="change2()" value="class_t">class_t</option>    
+                        <option onclick="change2()" value="class_p">class_p</option>    
+                    </select>
+                </div>
+                <div style="margin-top: 10px;">
+                    <div id="push">
+                        id:<input type="text" id="push_id">
+                        <!-- schoolid:<input type="text" id="schoolid"> -->
+                        data:<input type="text" id="data" style="width: 500px;">
+                    </div>
+                    <div id='heartbeat' style="display: none;">
+                        heartbeat: <input type="text" id="heartbeat_time" value="5">秒/次
+                        <input type="submit" value="start heartbeat" onclick="send_heartbeat()">
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button onclick="websocket_send()">send</button>
+                </div>
+            </div>
+            <div style="border: 1px dashed #999;margin-top: 15px;padding: 10px;">
+                <div id="msg" style="height: 500px;overflow: auto;line-height: 1.8;font-size: 14px;color: #444;"></div>
+            </div>
+        </div>
+	</div>
+</div>
+<script type="text/javascript">
+function show(id){
+    if ($('#'+id).css('display') == 'none') {
+        $('#'+id).css('display','block');
+    }else{
+        $('#'+id).css('display','none');
+    }
+}
+var flag = 'push';
+var type = 'school';
+var heartbeat_handl = null;
+function change() {
+    clearInterval(heartbeat_handl);
+    flag = document.getElementById('flag').value;
+    if(flag == 'push') {
+        document.getElementById('push').style.display = 'block';
+        document.getElementById('heartbeat').style.display = 'none';
+    }else if(flag == 'heartbeat'){
+        document.getElementById('push').style.display = 'none';
+        document.getElementById('heartbeat').style.display = 'block';
+    }else{
+        document.getElementById('push').style.display = 'none';
+        document.getElementById('heartbeat').style.display = 'none';
+    }
+}
+function change2() {
+    type = document.getElementById('type').value;
+}
+
+var msg = document.getElementById("msg");
+var wsServer = 'ws://192.168.0.200:9501';
+var websocket = null;
+function connect(){
+    var login_type = document.getElementById('login_type').value;
+    var phone = document.getElementById('phone').value;
+    if (phone == '') {
+        tips('请输入电话号码!',4000);
+        return;
+    }
+    $.ajax({
+        type:'post',
+        url:'/Admin/Systools/get_test_token',
+        data:{'type':login_type,'phone':phone},
+        dataType:'json',
+        success: function(data){
+            if (data.status == 0) {
+                window.location.href = '/Admin';
+                return;
+            }
+            if (data.code == 0) {
+                tips(data.info,5000);
+            }else if(data.code == 1){
+                websocket = null;
+                websocket = new WebSocket(wsServer+'?token='+data.token);
+                websocket.onopen = function (evt) {
+                    if (websocket.readyState == 1) {
+                        msg.innerHTML = '<span class="ret_data">sys: </span>Connected<br />';
+                    }
+                }
+                websocket.onclose = function (evt) {
+                    msg.innerHTML = '<span class="ret_data">sys: </span>Disconnected<br>' + msg.innerHTML;
+                };
+
+                websocket.onmessage = function (evt) {
+                    msg.innerHTML = '<span class="ret_data">msg: </span>' + evt.data +'<br>' + msg.innerHTML;
+                };
+            }else{
+                tips('get_test_token error',5000);
+            }
+        }
+    });
+}
+
+function send_heartbeat(){
+    var heartbeat = document.getElementById('heartbeat_time').value;
+    if (websocket == null) {
+        tips('Not connected',4000);
+    }else{
+        clearInterval(heartbeat_handl);
+        heartbeat_handl = setInterval(function(){
+            var arr = {'flag':flag};
+            var str = JSON.stringify(arr);
+            websocket.send(str);
+        },heartbeat*1000);
+    }
+}
+
+function websocket_send(){
+    if (websocket == null) {
+        tips('not Connected',4000);
+        return;
+    }
+    var id = document.getElementById('push_id').value;
+    var data = document.getElementById('data').value;
+    document.getElementById('push_id').value = '';
+    document.getElementById('data').value = '';
+    //向服务器发送数据
+    var arr = {'flag':flag,'type':type,'id':id,'data':data};
+    var str = JSON.stringify(arr);
+    websocket.send(str);
+}
+
+var tips_inter = null;
+function tips(msg,time=0) {
+	clearTimeout(tips_inter);
+	$('.tips').text(msg);
+	$('.tips').animate({top:'-40px'},200);
+	$('.tips').animate({top:'0px'},400);
+	if (time != 0) {
+		tips_inter = setTimeout(function(){
+			$('.tips').animate({top:'-40px'},800);
+		},time+800);
+	}
+}
+</script>
+<div class="tips" style="background-color: #666;color: white;font-size: 16px;text-align: center;height: 40px;line-height: 40px;position: fixed;top:-40px;width: 100%;">
+</div>
+</body>
+</head>
+</html>
